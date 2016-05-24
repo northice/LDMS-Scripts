@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<ExportableContainer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" LastSavedBy="LDLAB\administrator" Revision="0" SourceCore="LDSERVER" Guid="fake" SaveType="Inherit">
+  <DuplicateReferences />
+  <SyncEnabled>No</SyncEnabled>
+  <RemoteConsole>LDSERVER</RemoteConsole>
+  <LastSavedDate>0001-01-01T00:00:00-08:00</LastSavedDate>
+  <Name>DSC - OS X - Standard - Brother HL 5370 DW</Name>
+  <AssemblyVer>10.0.0.0</AssemblyVer>
+  <Items>
+    <Exportable xsi:type="EVulnerability" LastSavedBy="LDLAB\administrator" Revision="131077" SourceCore="LDSERVER" Guid="INTL_DSC - OS X - Standard - Brother HL 5370 DW" SaveType="Inherit">
+      <DuplicateReferences />
+      <SyncEnabled>No</SyncEnabled>
+      <RemoteConsole>LDSERVER</RemoteConsole>
+      <LastSavedDate>2016-05-24T15:39:27.35-07:00</LastSavedDate>
+      <Notes>Detects whether the Brother HL 5370 DW printer is installed and if not, installs it.</Notes>
+      <Name>DSC - OS X - Standard - Brother HL 5370 DW</Name>
+      <AssemblyVer>10.0.0.0</AssemblyVer>
+      <Prerequisites />
+      <IAVAs />
+      <PublishDate>2016-03-17T06:52:18.163-07:00</PublishDate>
+      <Title>DSC - OS X - Standard - Brother HL 5370 DW</Title>
+      <Description>Custom definition to detect whether the printe Brother HL 5370 DW is installed on a Mac device.</Description>
+      <Summary />
+      <Lang>INTL</Lang>
+      <MoreInfoURL />
+      <FAQURL />
+      <MaxAutoFixTries>0</MaxAutoFixTries>
+      <Severity>3</Severity>
+      <OrigSeverity xsi:nil="true" />
+      <Vendor>DSC Demo</Vendor>
+      <Status>Enabled</Status>
+      <Type>Custom</Type>
+      <AutoFix>false</AutoFix>
+      <AutofixScopes />
+      <ScanScopes>
+        <string>Assembly Department</string>
+        <string>Baltimore</string>
+        <string>Boston</string>
+        <string>Chicago</string>
+        <string>Datacenter</string>
+        <string>Distribution Department</string>
+        <string>Dublin</string>
+        <string>Engineering Department</string>
+        <string>Executive Department</string>
+        <string>Facilities Department</string>
+        <string>Finance Department</string>
+        <string>Frankfurt</string>
+        <string>HR Department</string>
+        <string>IT Department</string>
+        <string>Legal Department</string>
+        <string>London</string>
+        <string>Manufacturing Department</string>
+        <string>Marketing Department</string>
+        <string>Operation Department</string>
+        <string>OS X DSC Demo</string>
+        <string>Paris</string>
+        <string>Sales Department</string>
+        <string>San Paulo</string>
+        <string>Seattle</string>
+        <string>Sydney</string>
+        <string>Tokyo</string>
+        <string>Toronto</string>
+      </ScanScopes>
+      <Tags />
+      <Fixable>AllFixable</Fixable>
+      <CanRunSilent>AllPatchesAreSilent</CanRunSilent>
+      <Compliance>false</Compliance>
+      <Category />
+      <SupercededState>None</SupercededState>
+      <Alert>false</Alert>
+      <HasCustomVars>false</HasCustomVars>
+      <Patches>
+        <Patch Download="DAuto" Silent="CRSYes" Reboot="RNo" UniqueFilename="Brother_HL_5370DW_series.ppd" Hash="hT6oTORYExHQSCUtI5Miqw==" Sha1="Y2hbLca75ZXXaR4rpINpX0HV/6E=" Sha256="5gHTExy3vFmV/jiF8GJVUPamr2oLdYV2F/qRLzE31E8=" Size="110704">
+          <Name>Brother HL 5370 DW</Name>
+          <Advanced>
+            <DetectScript>#!/bin/sh
+
+# printer to detect if installed, this needs to match exactly with the output of lpstat -a without all of the text beginning with accept
+printerName="Brother_HL_5370DW_series"
+
+# lpstat - v is used to get the description name shown in the Printers and Scanners settings
+printerArray=( $( lpstat -v | awk '{print $3}' | sed 's/:$//' ) )
+
+# compare the installed printers against the desired printer and exit with the approrpriate return code
+if [[ $printerArray == *"$printerName"* ]] ; then
+    echo "Found: $printerName already installed"
+    echo "Reason: $printerName already installed"
+    echo "Expected: $printerName to be installed"
+    echo "Detected: 0"
+    exit 0
+else
+    echo "Found: $printerName not currently installed"
+    echo "Reason: $printerName not currently installed"
+    echo "Expected: $printerName to be installed"
+    echo "Detected: 1"
+    exit 1
+fi
+
+</DetectScript>
+          </Advanced>
+          <Comments />
+          <URL>http://ldserver.ldlab.org/ldlogon/patch/INTL/Custom/Brother_HL_5370DW_series.ppd</URL>
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <Files>
+              <File>
+                <Path>/etc/cups/ppd/Brother_HL_5370DS_series.ppd</Path>
+                <FileDate>0001-01-01T00:00:00</FileDate>
+                <FileSize>0</FileSize>
+                <CommandID>c</CommandID>
+              </File>
+            </Files>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/sh&#xD;&#xA;#  Below are the variables and switches lpadmin will use.  For some of these switches, we'll create variables so we can easily handle change&#xD;&#xA;#&#xD;&#xA;&#xD;&#xA;##############################################################&#xD;&#xA;###   Part 1 - Additional Softwae Package Installer        ###&#xD;&#xA;##############################################################&#xD;&#xA;&#xD;&#xA;# This variable is used to install the additional printer software package&#xD;&#xA;# This action may or may not be needed, depending on the printer manufacturer&#xD;&#xA;# You can try commenting this part out and use it if the printer&#xD;&#xA;# states you need additional software after just running the command below&#xD;&#xA;# you'll know you need to use this step&#xD;&#xA;#&#xD;&#xA;# Download your printer's DMG installer and place it in an HTTP share&#xD;&#xA;# Update the path below to match your path&#xD;&#xA;printerInstaller=&quot;http://ldserver.ldlab.org/ldlogon/patch/INTL/Custom/Brother_PrinterDrivers_MonochromeLaser_1_1_0.dmg&quot;&#xD;&#xA;&#xD;&#xA;#command line to install the printer software package&#xD;&#xA;/Library/Application\ Support/LANDesk/bin/sdclient -package &quot;$printerInstaller&quot;&#xD;&#xA;&#xD;&#xA;##############################################################&#xD;&#xA;###   Part 2 - Command Line to Install the Printer         ###&#xD;&#xA;##############################################################&#xD;&#xA;&#xD;&#xA;# -E This switch is required as it enables the printer.  There are no variables associated.&#xD;&#xA;&#xD;&#xA;# -p is the switch for the printer name. In the variable below, give the name of the printer.&#xD;&#xA;# This name needs to match the output of lpstat -a in order to properly detect.&#xD;&#xA;# The name cannot have spaces.  This is the same name you'll want to have in your printer detection script as well.&#xD;&#xA;printerName=&quot;Brother_HL_5370DW_series&quot;&#xD;&#xA;&#xD;&#xA;# -D is the switch for the friendly printer name.  In the variable below, give the name of the printer, it can be anything you want.&#xD;&#xA;printerDescription=&quot;Brother HL-5370DW&quot;&#xD;&#xA;&#xD;&#xA;# -L is the switch for the location of the printer.  Provide the location of the printer, this name can have spaces.&#xD;&#xA;printerLocation=&quot;Home Office&quot;&#xD;&#xA;&#xD;&#xA;# -v This is the device URI.  You can choose to use ipp: or lpd:&#xD;&#xA;printerIPAddress=&quot;ipp://192.168.29.250&quot;&#xD;&#xA;&#xD;&#xA;# we need a printerPPD file to be local on the machine&#xD;&#xA;# to do this, we will need to copy the file from a network share to a local folder&#xD;&#xA;# sdclient will copy the file to the LANDESK sdcache folder&#xD;&#xA;cd /Library/Application\ Support/LANDesk/bin&#xD;&#xA;./sdclient -noinstall -package &quot;http://ldserver.ldlab.org/ldlogon/patch/INTL/Custom/Brother_HL_5370DW_series.ppd&quot;&#xD;&#xA;&#xD;&#xA;# -P This is the name and path of the PPD filename copied to the machine&#xD;&#xA;printerPPD=&quot;/Library/Application Support/LANDesk/sdcache/Brother_HL_5370DW_series.ppd&quot;&#xD;&#xA;&#xD;&#xA;# -o Do you want to share out the printer?&#xD;&#xA;printerSharing=&quot;printer-is-shared=false&quot;&#xD;&#xA;&#xD;&#xA;# commandline lpadmin with all of its switches&#xD;&#xA;lpadmin -p &quot;$printerName&quot; -E -v &quot;$printerIPAddress&quot; -P &quot;$printerPPD&quot; -L &quot;$printerLocation&quot; -o &quot;$printerSharing&quot;; cupsenable &quot;$printerName&quot;; cupsaccept &quot;$printerName&quot;;&#xD;&#xA;&#xD;&#xA;" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+      </Patches>
+      <AssociatedProducts />
+      <ReadonlyGroups />
+      <LANDeskRevision>2</LANDeskRevision>
+    </Exportable>
+  </Items>
+</ExportableContainer>

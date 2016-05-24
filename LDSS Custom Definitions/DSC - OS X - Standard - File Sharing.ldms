@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<ExportableContainer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" LastSavedBy="LDLAB\administrator" Revision="0" SourceCore="LDSERVER" Guid="fake" SaveType="Inherit">
+  <DuplicateReferences />
+  <SyncEnabled>No</SyncEnabled>
+  <RemoteConsole>LDSERVER</RemoteConsole>
+  <LastSavedDate>0001-01-01T00:00:00-08:00</LastSavedDate>
+  <Name>DSC - OS X - Standard - File Sharing</Name>
+  <AssemblyVer>10.0.0.0</AssemblyVer>
+  <Items>
+    <Exportable xsi:type="EVulnerability" LastSavedBy="LDLAB\administrator" Revision="720912" SourceCore="LDSERVER" Guid="INTL_DSC - OS X - Standard - File Sharing" SaveType="Inherit">
+      <DuplicateReferences />
+      <SyncEnabled>No</SyncEnabled>
+      <RemoteConsole>LDSERVER</RemoteConsole>
+      <LastSavedDate>2016-05-24T15:39:27.35-07:00</LastSavedDate>
+      <Notes />
+      <Name>DSC - OS X - Standard - File Sharing</Name>
+      <Groups>
+        <string>OS X State Management + OS X DSC</string>
+      </Groups>
+      <AssemblyVer>10.0.0.0</AssemblyVer>
+      <Prerequisites />
+      <IAVAs />
+      <PublishDate>2016-04-23T23:22:47.643-07:00</PublishDate>
+      <Title>DSC - OS X - Standard - File Sharing</Title>
+      <Description />
+      <Summary />
+      <Lang>INTL</Lang>
+      <MoreInfoURL />
+      <FAQURL />
+      <MaxAutoFixTries>-1</MaxAutoFixTries>
+      <Severity>3</Severity>
+      <OrigSeverity xsi:nil="true" />
+      <Vendor>DSC Demo</Vendor>
+      <Status>Enabled</Status>
+      <Type>Custom</Type>
+      <AutoFix>false</AutoFix>
+      <AutofixScopes />
+      <ScanScopes>
+        <string>Assembly Department</string>
+        <string>Baltimore</string>
+        <string>Boston</string>
+        <string>Chicago</string>
+        <string>Datacenter</string>
+        <string>Distribution Department</string>
+        <string>Dublin</string>
+        <string>Engineering Department</string>
+        <string>Executive Department</string>
+        <string>Facilities Department</string>
+        <string>Finance Department</string>
+        <string>Frankfurt</string>
+        <string>HR Department</string>
+        <string>IT Department</string>
+        <string>Legal Department</string>
+        <string>London</string>
+        <string>Manufacturing Department</string>
+        <string>Marketing Department</string>
+        <string>Operation Department</string>
+        <string>OS X DSC Demo</string>
+        <string>Paris</string>
+        <string>Sales Department</string>
+        <string>San Paulo</string>
+        <string>Seattle</string>
+        <string>Sydney</string>
+        <string>Tokyo</string>
+        <string>Toronto</string>
+      </ScanScopes>
+      <Tags />
+      <Fixable>AllFixable</Fixable>
+      <CanRunSilent>AllPatchesAreSilent</CanRunSilent>
+      <Compliance>false</Compliance>
+      <Category />
+      <SupercededState>None</SupercededState>
+      <Alert>false</Alert>
+      <HasCustomVars>false</HasCustomVars>
+      <Patches>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - File Sharing_Ensure systems do not have File Sharing enabled" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Ensure systems do not have File Sharing enabled</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+Reason="File sharing is enabled"
+Expected="File sharing should be disabled"
+
+check=`sudo launchctl list | grep AppleFile`
+if [[ "$check" =~ "AppleFile" ]]; then
+   Detected=1
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+else
+   echo [QUOT]Detected:$Detected[QUOT]
+fi
+
+exit 0</DetectScript>
+          </Advanced>
+          <Comments />
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/bash&#xD;&#xA;#ISMAC=TRUE&#xD;&#xA;&#xD;&#xA;sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.AppleFileServer.plist&#xD;&#xA;sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.smbd.plist&#xD;&#xA;&#xD;&#xA;exit 0" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - File Sharing_Ensure systems do not have Public Folders being shared" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Ensure systems do not have Public Folders being shared</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+
+check=`dscl . list /SharePoints`
+if [ "$check" = "" ]; then
+   echo [QUOT]Detected:$Detected[QUOT]
+else
+   Detected=1
+   Expected="No public folders being shared."
+   Reason="Found public folders being shared."
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+fi
+
+exit 0</DetectScript>
+          </Advanced>
+          <Comments />
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/bash&#xD;&#xA;#ISMAC=TRUE&#xD;&#xA;&#xD;&#xA;# Remove Public Folders&#xD;&#xA;for d in &quot;/Users/&quot;*&#xD;&#xA;do&#xD;&#xA; dscl . delete &quot;/SharePoints/${d#/Users/}'s Public Folder&quot;&#xD;&#xA;done&#xD;&#xA;&#xD;&#xA;echo [QUOT]Removed Public Shared Folders[QUOT]&#xD;&#xA;&#xD;&#xA;exit 0" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+      </Patches>
+      <AssociatedProducts />
+      <ReadonlyGroups />
+      <LANDeskRevision>11</LANDeskRevision>
+    </Exportable>
+  </Items>
+</ExportableContainer>

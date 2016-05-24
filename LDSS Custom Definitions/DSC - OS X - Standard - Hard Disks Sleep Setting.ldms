@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<ExportableContainer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" LastSavedBy="LDLAB\administrator" Revision="0" SourceCore="LDSERVER" Guid="fake" SaveType="Inherit">
+  <DuplicateReferences />
+  <SyncEnabled>No</SyncEnabled>
+  <RemoteConsole>LDSERVER</RemoteConsole>
+  <LastSavedDate>0001-01-01T00:00:00-08:00</LastSavedDate>
+  <Name>DSC - OS X - Standard - Hard Disks Sleep Setting</Name>
+  <AssemblyVer>10.0.0.0</AssemblyVer>
+  <Items>
+    <Exportable xsi:type="EVulnerability" LastSavedBy="LDLAB\administrator" Revision="262150" SourceCore="LDSERVER" Guid="INTL_DSC - OS X - Standard - Hard Disks Sleep Setting" SaveType="Inherit">
+      <DuplicateReferences />
+      <SyncEnabled>No</SyncEnabled>
+      <RemoteConsole>LDSERVER</RemoteConsole>
+      <LastSavedDate>2016-05-24T15:39:27.35-07:00</LastSavedDate>
+      <Notes>Detect whether Apple's auto update feature is enabled and disabled if it is.</Notes>
+      <Name>DSC - OS X - Standard - Hard Disks Sleep Setting</Name>
+      <AssemblyVer>10.0.0.0</AssemblyVer>
+      <Prerequisites />
+      <IAVAs />
+      <PublishDate>2016-04-20T07:57:23.5-07:00</PublishDate>
+      <Title>DSC - OS X - Standard - Hard Disks Sleep Setting</Title>
+      <Description />
+      <Summary />
+      <Lang>INTL</Lang>
+      <MoreInfoURL />
+      <FAQURL />
+      <MaxAutoFixTries>0</MaxAutoFixTries>
+      <Severity>2</Severity>
+      <OrigSeverity xsi:nil="true" />
+      <Vendor>DSC Demo</Vendor>
+      <Status>Enabled</Status>
+      <Type>Custom</Type>
+      <AutoFix>false</AutoFix>
+      <AutofixScopes />
+      <ScanScopes>
+        <string>Assembly Department</string>
+        <string>Baltimore</string>
+        <string>Boston</string>
+        <string>Chicago</string>
+        <string>Datacenter</string>
+        <string>Distribution Department</string>
+        <string>Dublin</string>
+        <string>Engineering Department</string>
+        <string>Executive Department</string>
+        <string>Facilities Department</string>
+        <string>Finance Department</string>
+        <string>Frankfurt</string>
+        <string>HR Department</string>
+        <string>IT Department</string>
+        <string>Legal Department</string>
+        <string>London</string>
+        <string>Manufacturing Department</string>
+        <string>Marketing Department</string>
+        <string>Operation Department</string>
+        <string>OS X DSC Demo</string>
+        <string>Paris</string>
+        <string>Sales Department</string>
+        <string>San Paulo</string>
+        <string>Seattle</string>
+        <string>Sydney</string>
+        <string>Tokyo</string>
+        <string>Toronto</string>
+      </ScanScopes>
+      <Tags />
+      <Fixable>AllFixable</Fixable>
+      <CanRunSilent>AllPatchesAreSilent</CanRunSilent>
+      <Compliance>false</Compliance>
+      <Category />
+      <SupercededState>None</SupercededState>
+      <Alert>false</Alert>
+      <HasCustomVars>false</HasCustomVars>
+      <Patches>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - Hard Disks Sleep Setting_Hard Disks Sleep Status" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Hard Disks Sleep Status</Name>
+          <Advanced>
+            <DetectScript>#!/bin/sh
+
+#  Put Hard Disks to Sleep When Possible Detection.sh
+#  Created by Bennett Norton on 4/5/16.
+
+
+# The sleep setting is found in the com.apple.PowerManagement.plist file
+sleepSetting=( $( defaults read /Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist | grep "Disk Sleep Timer" | sed 's/;.*//'| sed 's/ //'| awk '{print $5}') )
+
+# compare the returned value with your desired state
+# a disksleep value of 10 means it is enabled
+# a disksleep value of 0 means it is disabled
+# this setting can be applied for all power states or just when on battery
+# as such, you'll have two values returned using the above command
+
+if [[ $sleepSetting == "0" ]] ; then
+    echo "Found: The option to 'Put Hard Disks to Sleep When Possible' is already disabled"
+    echo "Reason: The value for Disk Sleep Timer is: $sleepSetting."
+    echo "Expected: The value for Disk Sleep Timer should be 0"
+    echo "Detected: 0"
+    exit 0
+else
+    echo "Found: The option to 'Put Hard Disks to Sleep When Possible' is currently enabled"
+    echo "Reason: The value for Disk Sleep Timer is: $sleepSetting."
+    echo "Expected: The value for Disk Sleep Timer should be 0"
+    echo "Detected: 1"
+    exit 1
+fi
+
+</DetectScript>
+          </Advanced>
+          <Comments />
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>true</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <Cmds>
+              <Cmd Type="ShellScript">
+                <Args>
+                  <Arg N="ScriptCode" V="#!/bin/sh&#xD;&#xA;#  Disable &quot;Put Hard Disks to Sleep When Possible&quot;.sh&#xD;&#xA;#  Created by Bennett Norton on 4/5/16.&#xD;&#xA;&#xD;&#xA;# The sleep setting is found in the com.apple.PowerManagement.plist file&#xD;&#xA;# The detection logic has been written in another script - but the command below is what is called&#xD;&#xA;#sleepSetting=( $( defaults read /Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist | grep &quot;Disk Sleep Timer&quot; | sed 's/;.*//'| awk '{print $5}') )&#xD;&#xA;&#xD;&#xA;# a disksleep value of 10 means it is enabled&#xD;&#xA;# a disksleep value of 0 means it is disabled&#xD;&#xA;# this setting can be applied for all power states or just when on battery&#xD;&#xA;&#xD;&#xA;# the -a switch will enable/disable the disk sleep setting for all power states&#xD;&#xA;pmset -a disksleep 10&#xD;&#xA;&#xD;&#xA;# the -b switch will enable/disable the disk sleep setting for just the battery state&#xD;&#xA;#pmset -b disksleep 0&#xD;&#xA;" />
+                </Args>
+              </Cmd>
+            </Cmds>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/sh&#xD;&#xA;#  Disable &quot;Put Hard Disks to Sleep When Possible&quot;.sh&#xD;&#xA;#  Created by Bennett Norton on 4/5/16.&#xD;&#xA;&#xD;&#xA;# The sleep setting is found in the com.apple.PowerManagement.plist file&#xD;&#xA;# The detection logic has been written in another script - but the command below is what is called&#xD;&#xA;#sleepSetting=( $( defaults read /Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist | grep &quot;Disk Sleep Timer&quot; | sed 's/;.*//'| awk '{print $5}') )&#xD;&#xA;&#xD;&#xA;# a disksleep value of 10 means it is enabled&#xD;&#xA;# a disksleep value of 0 means it is disabled&#xD;&#xA;# this setting can be applied for all power states or just when on battery&#xD;&#xA;&#xD;&#xA;# the -a switch will enable/disable the disk sleep setting for all power states&#xD;&#xA;pmset -a disksleep 0&#xD;&#xA;&#xD;&#xA;# the -b switch will enable/disable the disk sleep setting for just the battery state&#xD;&#xA;#pmset -b disksleep 0&#xD;&#xA;&#xD;&#xA;" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+      </Patches>
+      <AssociatedProducts />
+      <ReadonlyGroups />
+      <LANDeskRevision>4</LANDeskRevision>
+    </Exportable>
+  </Items>
+</ExportableContainer>

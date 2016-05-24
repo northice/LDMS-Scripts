@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<ExportableContainer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" LastSavedBy="LDLAB\administrator" Revision="0" SourceCore="LDSERVER" Guid="fake" SaveType="Inherit">
+  <DuplicateReferences />
+  <SyncEnabled>No</SyncEnabled>
+  <RemoteConsole>LDSERVER</RemoteConsole>
+  <LastSavedDate>0001-01-01T00:00:00-08:00</LastSavedDate>
+  <Name>DSC - OS X - Standard - Agent Health Boot Strap</Name>
+  <AssemblyVer>10.0.0.0</AssemblyVer>
+  <Items>
+    <Exportable xsi:type="EVulnerability" LastSavedBy="LDLAB\administrator" Revision="2162732" SourceCore="LDSERVER" Guid="INTL_DSC - OS X - Standard - Agent Health Boot Strap" SaveType="Inherit">
+      <DuplicateReferences />
+      <SyncEnabled>No</SyncEnabled>
+      <RemoteConsole>LDSERVER</RemoteConsole>
+      <LastSavedDate>2016-05-24T15:39:27.35-07:00</LastSavedDate>
+      <Notes>Configures the OS X Agent Health Boot Strap.</Notes>
+      <Name>DSC - OS X - Standard - Agent Health Boot Strap</Name>
+      <Groups>
+        <string>OS X State Management + OS X DSC Unassigned</string>
+      </Groups>
+      <AssemblyVer>10.0.0.0</AssemblyVer>
+      <Prerequisites />
+      <IAVAs />
+      <PublishDate>2016-03-20T21:34:54.197-07:00</PublishDate>
+      <Title>DSC - OS X - Standard - Agent Health Boot Strap</Title>
+      <Description />
+      <Summary />
+      <Lang>INTL</Lang>
+      <MoreInfoURL />
+      <FAQURL />
+      <MaxAutoFixTries>-1</MaxAutoFixTries>
+      <Severity>1</Severity>
+      <OrigSeverity xsi:nil="true" />
+      <Vendor>DSC Demo</Vendor>
+      <Status>Enabled</Status>
+      <Type>Custom</Type>
+      <AutoFix>false</AutoFix>
+      <AutofixScopes />
+      <ScanScopes>
+        <string>Assembly Department</string>
+        <string>Baltimore</string>
+        <string>Boston</string>
+        <string>Chicago</string>
+        <string>Datacenter</string>
+        <string>Distribution Department</string>
+        <string>Dublin</string>
+        <string>Engineering Department</string>
+        <string>Executive Department</string>
+        <string>Facilities Department</string>
+        <string>Finance Department</string>
+        <string>Frankfurt</string>
+        <string>HR Department</string>
+        <string>IT Department</string>
+        <string>Legal Department</string>
+        <string>London</string>
+        <string>Manufacturing Department</string>
+        <string>Marketing Department</string>
+        <string>Operation Department</string>
+        <string>OS X DSC Demo</string>
+        <string>Paris</string>
+        <string>Sales Department</string>
+        <string>San Paulo</string>
+        <string>Seattle</string>
+        <string>Sydney</string>
+        <string>Tokyo</string>
+        <string>Toronto</string>
+      </ScanScopes>
+      <Tags />
+      <Fixable>AllFixable</Fixable>
+      <CanRunSilent>AllPatchesAreSilent</CanRunSilent>
+      <Compliance>false</Compliance>
+      <Category />
+      <SupercededState>None</SupercededState>
+      <Alert>false</Alert>
+      <HasCustomVars>false</HasCustomVars>
+      <Patches>
+        <Patch Download="DAuto" Silent="CRSYes" Reboot="RNo" UniqueFilename="OS_X_DSC_Agent.dmg" Hash="yValR5nG2wgaMl3sKdM59w==" Sha1="BIR2PsaS0DYAgr4xdaYtnz3+Sck=" Sha256="T1prI4IS4RLdx8XRBqgSHAu3yQtucSVnsHTcOkGrq1A=" Size="38010141">
+          <Name>Ensure bootstrap exists</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+Reason="Missing bootstrap"
+Expected="Agent Health boot strap should exist"
+AgentHash="0484763ec692d0360082be3175a62d9f3dfe49c9"
+
+# File checks
+if [ ! -f /usr/local/ldms/bootstrap.sh ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchDaemons/com.ldms.bootstrap.plist ]; then
+   Detected=1
+else
+   Detected=0
+fi
+
+hashvalue=`openssl sha1 /usr/local/ldms/agent.dmg`
+if [[ $hashvalue == *"$AgentHash"* ]]; then
+   echo "Detected correct agent.dmg"
+else
+   Detected=1
+fi
+
+if [ $Detected -eq 1 ]; then
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+else
+   echo [QUOT]Detected:$Detected[QUOT]
+fi
+exit 0</DetectScript>
+          </Advanced>
+          <Comments />
+          <URL>http://LDSERVER.ldlab.org/softwareDist/Agents/OS_X_DSC_Agent.dmg</URL>
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <Files>
+              <File>
+                <Path>/usr/local/ldms/agent.dmg</Path>
+                <FileDate>0001-01-01T00:00:00</FileDate>
+                <FileSize>0</FileSize>
+                <CommandID>c</CommandID>
+              </File>
+            </Files>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/bash&#xD;&#xA;#ISMAC=TRUE&#xD;&#xA;&#xD;&#xA;# Settings below for installation&#xD;&#xA;pathToInstall=&quot;/usr/local/ldms/bootstrap.sh&quot;&#xD;&#xA;pathToDaemon=&quot;/Library/LaunchDaemons/com.ldms.bootstrap.plist&quot;&#xD;&#xA;&#xD;&#xA;# Create root directory&#xD;&#xA;mkdir /usr/local/ldms&#xD;&#xA;&#xD;&#xA;# Install bootstrap&#xD;&#xA;echo &quot;#!/bin/sh&quot; [GT] $pathToInstall&#xD;&#xA;echo &quot;# LDMS Agent Bootstrap&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;# &quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;echo \&quot;Daemon check is starting\&quot;&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;Detected=0&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;# File checks&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;if [ ! -f /Library/Application\ Support/LANDesk/bin/ldswdetect.sh ]; then&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=1&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldswrepair.sh ]; then&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=1&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;elif [ ! -f /Library/Application\ Support/LANDesk/bin/vulscand ]; then&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=1&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;elif [ ! -f /Library/Application\ Support/LANDesk/bin/vulscan ]; then&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=1&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldswupdate ]; then&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=1&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;else&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=0&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;fi&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;# Check daemons&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo 'check=`sudo launchctl list com.landesk.scheduler | grep PID | grep &quot;^[1-9]*&quot;`' [GT][GT] $pathToInstall&#xD;&#xA;echo 'if [[ &quot;$check&quot; =~ &quot;PID&quot; ]]; then' [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   echo daemon running&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;else&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=1&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;fi&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo 'if [ $Detected -eq 1 ]; then' [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;/usr/bin/hdiutil attach /usr/local/ldms/agent.dmg&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;/usr/sbin/installer -pkg /Volumes/LDMSClient/LDMSAgent.pkg -target /&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;/usr/bin/hdiutil detach /Volumes/LDMSClient&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;fi&quot; [GT][GT] $pathToInstall&#xD;&#xA;chown root:wheel &quot;$pathToInstall&quot;&#xD;&#xA;&#xD;&#xA;# Install daemon&#xD;&#xA;echo '[LT]?xml version=[QUOT]1.0[QUOT] encoding=[QUOT]UTF-8[QUOT]?[GT]' [GT] $pathToDaemon&#xD;&#xA;echo '[LT]!DOCTYPE plist PUBLIC [QUOT]-//Apple//DTD PLIST 1.0//EN[QUOT] [QUOT]http://www.apple.com/DTDs/PropertyList-1.0.dtd[QUOT][GT]' [GT][GT] $pathToDaemon&#xD;&#xA;echo '[LT]plist version=[QUOT]1.0[QUOT][GT]' [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;[LT]dict[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]key[GT]Label[LT]/key[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]string[GT]com.ldms.bootstrap[LT]/string[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]key[GT]ProgramArguments[LT]/key[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]array[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;       [LT]string[GT]/bin/sh[LT]/string[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;       [LT]string[GT]${pathToInstall}[LT]/string[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]/array[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]key[GT]StartInterval[LT]/key[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]integer[GT]3600[LT]/integer[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;[LT]/dict[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;[LT]/plist[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;chown root:wheel &quot;$pathToDaemon&quot;&#xD;&#xA;&#xD;&#xA;launchctl load $pathToDaemon&#xD;&#xA;&#xD;&#xA;exit 0" />
+              </Args>
+            </Cmd>
+            <Cmd Type="Copy">
+              <Args>
+                <Arg N="dest" V="/usr/local/ldms/agent.dmg" />
+                <Arg N="source" V="%SDMCACHE%%PATCHFILENAME%" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - Agent Health Boot Strap_Ensure second bootstrap exists" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Ensure second bootstrap exists</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+Reason="Missing second bootstrap"
+Expected="Agent Health boot strap should exist"
+
+# File checks
+if [ ! -f /System/Library/LaunchDaemons/com.ldms.launcher.plist ]; then
+   Detected=1
+else
+   Detected=0
+fi
+
+if [ $Detected -eq 1 ]; then
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+else
+   echo [QUOT]Detected:$Detected[QUOT]
+fi
+exit 0</DetectScript>
+          </Advanced>
+          <Comments />
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <Files>
+              <File>
+                <Path>/usr/local/ldms/agent.dmg</Path>
+                <FileDate>0001-01-01T00:00:00</FileDate>
+                <FileSize>0</FileSize>
+                <CommandID>c</CommandID>
+              </File>
+            </Files>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/bash&#xD;&#xA;#ISMAC=TRUE&#xD;&#xA;&#xD;&#xA;# Settings below for installation&#xD;&#xA;pathToInstall=&quot;/usr/local/ldms/bootstrap.sh&quot;&#xD;&#xA;pathToDaemon=&quot;/System/Library/LaunchDaemons/com.ldms.launcher.plist&quot;&#xD;&#xA;&#xD;&#xA;# Create root directory&#xD;&#xA;mkdir /usr/local/ldms&#xD;&#xA;&#xD;&#xA;# Install daemon&#xD;&#xA;echo '[LT]?xml version=[QUOT]1.0[QUOT] encoding=[QUOT]UTF-8[QUOT]?[GT]' [GT] $pathToDaemon&#xD;&#xA;echo '[LT]!DOCTYPE plist PUBLIC [QUOT]-//Apple//DTD PLIST 1.0//EN[QUOT] [QUOT]http://www.apple.com/DTDs/PropertyList-1.0.dtd[QUOT][GT]' [GT][GT] $pathToDaemon&#xD;&#xA;echo '[LT]plist version=[QUOT]1.0[QUOT][GT]' [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;[LT]dict[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]key[GT]Label[LT]/key[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]string[GT]com.ldms.launcher[LT]/string[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]key[GT]ProgramArguments[LT]/key[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]array[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;       [LT]string[GT]/bin/sh[LT]/string[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;       [LT]string[GT]${pathToInstall}[LT]/string[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]/array[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]key[GT]StartInterval[LT]/key[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]integer[GT]43200[LT]/integer[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;[LT]/dict[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;[LT]/plist[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;chown root:wheel &quot;$pathToDaemon&quot;&#xD;&#xA;&#xD;&#xA;launchctl load $pathToDaemon&#xD;&#xA;&#xD;&#xA;exit 0" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+      </Patches>
+      <AssociatedProducts />
+      <ReadonlyGroups />
+      <LANDeskRevision>33</LANDeskRevision>
+    </Exportable>
+  </Items>
+</ExportableContainer>

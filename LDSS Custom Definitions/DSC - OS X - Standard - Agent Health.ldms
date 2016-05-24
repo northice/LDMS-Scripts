@@ -1,0 +1,1272 @@
+<?xml version="1.0"?>
+<ExportableContainer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" LastSavedBy="LDLAB\administrator" Revision="0" SourceCore="LDSERVER" Guid="fake" SaveType="Inherit">
+  <DuplicateReferences />
+  <SyncEnabled>No</SyncEnabled>
+  <RemoteConsole>LDSERVER</RemoteConsole>
+  <LastSavedDate>0001-01-01T00:00:00-08:00</LastSavedDate>
+  <Name>DSC - OS X - Standard - Agent Health</Name>
+  <AssemblyVer>10.0.0.0</AssemblyVer>
+  <Items>
+    <Exportable xsi:type="EVulnerability" LastSavedBy="LDLAB\administrator" Revision="3735623" SourceCore="LDSERVER" Guid="INTL_DSC - OS X - Standard - Agent Health" SaveType="Inherit">
+      <DuplicateReferences />
+      <SyncEnabled>No</SyncEnabled>
+      <RemoteConsole>LDSERVER</RemoteConsole>
+      <LastSavedDate>2016-05-24T15:39:27.35-07:00</LastSavedDate>
+      <Notes />
+      <Name>DSC - OS X - Standard - Agent Health</Name>
+      <Groups>
+        <string>OS X State Management + OS X DSC</string>
+      </Groups>
+      <AssemblyVer>10.0.0.0</AssemblyVer>
+      <Prerequisites>
+        <EVulnerability LastSavedBy="LDLAB\administrator" Revision="2162732" SourceCore="LDSERVER" Guid="INTL_DSC - OS X - Standard - Agent Health Boot Strap" SaveType="Inherit">
+          <DuplicateReferences />
+          <SyncEnabled>No</SyncEnabled>
+          <RemoteConsole>LDSERVER</RemoteConsole>
+          <LastSavedDate>2016-05-24T15:39:27.35-07:00</LastSavedDate>
+          <Notes>Configures the OS X Agent Health Boot Strap.</Notes>
+          <Name>DSC - OS X - Standard - Agent Health Boot Strap</Name>
+          <Groups>
+            <string>OS X State Management + OS X DSC Unassigned</string>
+          </Groups>
+          <AssemblyVer>10.0.0.0</AssemblyVer>
+          <Prerequisites />
+          <IAVAs />
+          <PublishDate>2016-03-20T21:34:54.197-07:00</PublishDate>
+          <Title>DSC - OS X - Standard - Agent Health Boot Strap</Title>
+          <Description />
+          <Summary />
+          <Lang>INTL</Lang>
+          <MoreInfoURL />
+          <FAQURL />
+          <MaxAutoFixTries>-1</MaxAutoFixTries>
+          <Severity>1</Severity>
+          <OrigSeverity xsi:nil="true" />
+          <Vendor>DSC Demo</Vendor>
+          <Status>Enabled</Status>
+          <Type>Custom</Type>
+          <AutoFix>false</AutoFix>
+          <AutofixScopes />
+          <ScanScopes>
+            <string>Assembly Department</string>
+            <string>Baltimore</string>
+            <string>Boston</string>
+            <string>Chicago</string>
+            <string>Datacenter</string>
+            <string>Distribution Department</string>
+            <string>Dublin</string>
+            <string>Engineering Department</string>
+            <string>Executive Department</string>
+            <string>Facilities Department</string>
+            <string>Finance Department</string>
+            <string>Frankfurt</string>
+            <string>HR Department</string>
+            <string>IT Department</string>
+            <string>Legal Department</string>
+            <string>London</string>
+            <string>Manufacturing Department</string>
+            <string>Marketing Department</string>
+            <string>Operation Department</string>
+            <string>OS X DSC Demo</string>
+            <string>Paris</string>
+            <string>Sales Department</string>
+            <string>San Paulo</string>
+            <string>Seattle</string>
+            <string>Sydney</string>
+            <string>Tokyo</string>
+            <string>Toronto</string>
+          </ScanScopes>
+          <Tags />
+          <Fixable>AllFixable</Fixable>
+          <CanRunSilent>AllPatchesAreSilent</CanRunSilent>
+          <Compliance>false</Compliance>
+          <Category />
+          <SupercededState>None</SupercededState>
+          <Alert>false</Alert>
+          <HasCustomVars>false</HasCustomVars>
+          <Patches>
+            <Patch Download="DAuto" Silent="CRSYes" Reboot="RNo" UniqueFilename="OS_X_DSC_Agent.dmg" Hash="yValR5nG2wgaMl3sKdM59w==" Sha1="BIR2PsaS0DYAgr4xdaYtnz3+Sck=" Sha256="T1prI4IS4RLdx8XRBqgSHAu3yQtucSVnsHTcOkGrq1A=" Size="38010141">
+              <Name>Ensure bootstrap exists</Name>
+              <Advanced>
+                <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+Reason="Missing bootstrap"
+Expected="Agent Health boot strap should exist"
+AgentHash="0484763ec692d0360082be3175a62d9f3dfe49c9"
+
+# File checks
+if [ ! -f /usr/local/ldms/bootstrap.sh ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchDaemons/com.ldms.bootstrap.plist ]; then
+   Detected=1
+else
+   Detected=0
+fi
+
+hashvalue=`openssl sha1 /usr/local/ldms/agent.dmg`
+if [[ $hashvalue == *"$AgentHash"* ]]; then
+   echo "Detected correct agent.dmg"
+else
+   Detected=1
+fi
+
+if [ $Detected -eq 1 ]; then
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+else
+   echo [QUOT]Detected:$Detected[QUOT]
+fi
+exit 0</DetectScript>
+              </Advanced>
+              <Comments />
+              <URL>http://LDSERVER.ldlab.org/softwareDist/Agents/OS_X_DSC_Agent.dmg</URL>
+              <State>Enabled</State>
+              <RunAsUser>false</RunAsUser>
+              <DisableWow64Redirect>false</DisableWow64Redirect>
+              <UACElevation>false</UACElevation>
+              <Files />
+              <RegKeys />
+              <Products />
+              <Platforms>
+                <ID>macosx</ID>
+                <ID>macosxserver</ID>
+              </Platforms>
+              <UninstallInfo>
+                <canBeUninstalled>false</canBeUninstalled>
+                <requiresOriginalPatch>false</requiresOriginalPatch>
+                <Files>
+                  <File>
+                    <Path>/usr/local/ldms/agent.dmg</Path>
+                    <FileDate>0001-01-01T00:00:00</FileDate>
+                    <FileSize>0</FileSize>
+                    <CommandID>c</CommandID>
+                  </File>
+                </Files>
+                <RunAsUser>false</RunAsUser>
+                <DisableWow64Redirect>false</DisableWow64Redirect>
+                <UACElevation>false</UACElevation>
+              </UninstallInfo>
+              <Cmds>
+                <Cmd Type="ShellScript">
+                  <Args>
+                    <Arg N="ScriptCode" V="#!/bin/bash&#xD;&#xA;#ISMAC=TRUE&#xD;&#xA;&#xD;&#xA;# Settings below for installation&#xD;&#xA;pathToInstall=&quot;/usr/local/ldms/bootstrap.sh&quot;&#xD;&#xA;pathToDaemon=&quot;/Library/LaunchDaemons/com.ldms.bootstrap.plist&quot;&#xD;&#xA;&#xD;&#xA;# Create root directory&#xD;&#xA;mkdir /usr/local/ldms&#xD;&#xA;&#xD;&#xA;# Install bootstrap&#xD;&#xA;echo &quot;#!/bin/sh&quot; [GT] $pathToInstall&#xD;&#xA;echo &quot;# LDMS Agent Bootstrap&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;# &quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;echo \&quot;Daemon check is starting\&quot;&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;Detected=0&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;# File checks&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;if [ ! -f /Library/Application\ Support/LANDesk/bin/ldswdetect.sh ]; then&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=1&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldswrepair.sh ]; then&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=1&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;elif [ ! -f /Library/Application\ Support/LANDesk/bin/vulscand ]; then&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=1&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;elif [ ! -f /Library/Application\ Support/LANDesk/bin/vulscan ]; then&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=1&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldswupdate ]; then&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=1&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;else&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=0&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;fi&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;# Check daemons&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo 'check=`sudo launchctl list com.landesk.scheduler | grep PID | grep &quot;^[1-9]*&quot;`' [GT][GT] $pathToInstall&#xD;&#xA;echo 'if [[ &quot;$check&quot; =~ &quot;PID&quot; ]]; then' [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   echo daemon running&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;else&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;   Detected=1&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;fi&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo 'if [ $Detected -eq 1 ]; then' [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;/usr/bin/hdiutil attach /usr/local/ldms/agent.dmg&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;/usr/sbin/installer -pkg /Volumes/LDMSClient/LDMSAgent.pkg -target /&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;/usr/bin/hdiutil detach /Volumes/LDMSClient&quot; [GT][GT] $pathToInstall&#xD;&#xA;echo &quot;fi&quot; [GT][GT] $pathToInstall&#xD;&#xA;chown root:wheel &quot;$pathToInstall&quot;&#xD;&#xA;&#xD;&#xA;# Install daemon&#xD;&#xA;echo '[LT]?xml version=[QUOT]1.0[QUOT] encoding=[QUOT]UTF-8[QUOT]?[GT]' [GT] $pathToDaemon&#xD;&#xA;echo '[LT]!DOCTYPE plist PUBLIC [QUOT]-//Apple//DTD PLIST 1.0//EN[QUOT] [QUOT]http://www.apple.com/DTDs/PropertyList-1.0.dtd[QUOT][GT]' [GT][GT] $pathToDaemon&#xD;&#xA;echo '[LT]plist version=[QUOT]1.0[QUOT][GT]' [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;[LT]dict[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]key[GT]Label[LT]/key[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]string[GT]com.ldms.bootstrap[LT]/string[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]key[GT]ProgramArguments[LT]/key[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]array[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;       [LT]string[GT]/bin/sh[LT]/string[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;       [LT]string[GT]${pathToInstall}[LT]/string[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]/array[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]key[GT]StartInterval[LT]/key[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]integer[GT]3600[LT]/integer[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;[LT]/dict[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;[LT]/plist[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;chown root:wheel &quot;$pathToDaemon&quot;&#xD;&#xA;&#xD;&#xA;launchctl load $pathToDaemon&#xD;&#xA;&#xD;&#xA;exit 0" />
+                  </Args>
+                </Cmd>
+                <Cmd Type="Copy">
+                  <Args>
+                    <Arg N="dest" V="/usr/local/ldms/agent.dmg" />
+                    <Arg N="source" V="%SDMCACHE%%PATCHFILENAME%" />
+                  </Args>
+                </Cmd>
+              </Cmds>
+            </Patch>
+            <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - Agent Health Boot Strap_Ensure second bootstrap exists" Hash="" Sha1="" Sha256="" Size="0">
+              <Name>Ensure second bootstrap exists</Name>
+              <Advanced>
+                <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+Reason="Missing second bootstrap"
+Expected="Agent Health boot strap should exist"
+
+# File checks
+if [ ! -f /System/Library/LaunchDaemons/com.ldms.launcher.plist ]; then
+   Detected=1
+else
+   Detected=0
+fi
+
+if [ $Detected -eq 1 ]; then
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+else
+   echo [QUOT]Detected:$Detected[QUOT]
+fi
+exit 0</DetectScript>
+              </Advanced>
+              <Comments />
+              <URL />
+              <State>Enabled</State>
+              <RunAsUser>false</RunAsUser>
+              <DisableWow64Redirect>false</DisableWow64Redirect>
+              <UACElevation>false</UACElevation>
+              <Files />
+              <RegKeys />
+              <Products />
+              <Platforms>
+                <ID>macosx</ID>
+                <ID>macosxserver</ID>
+              </Platforms>
+              <UninstallInfo>
+                <canBeUninstalled>false</canBeUninstalled>
+                <requiresOriginalPatch>false</requiresOriginalPatch>
+                <Files>
+                  <File>
+                    <Path>/usr/local/ldms/agent.dmg</Path>
+                    <FileDate>0001-01-01T00:00:00</FileDate>
+                    <FileSize>0</FileSize>
+                    <CommandID>c</CommandID>
+                  </File>
+                </Files>
+                <RunAsUser>false</RunAsUser>
+                <DisableWow64Redirect>false</DisableWow64Redirect>
+                <UACElevation>false</UACElevation>
+              </UninstallInfo>
+              <Cmds>
+                <Cmd Type="ShellScript">
+                  <Args>
+                    <Arg N="ScriptCode" V="#!/bin/bash&#xD;&#xA;#ISMAC=TRUE&#xD;&#xA;&#xD;&#xA;# Settings below for installation&#xD;&#xA;pathToInstall=&quot;/usr/local/ldms/bootstrap.sh&quot;&#xD;&#xA;pathToDaemon=&quot;/System/Library/LaunchDaemons/com.ldms.launcher.plist&quot;&#xD;&#xA;&#xD;&#xA;# Create root directory&#xD;&#xA;mkdir /usr/local/ldms&#xD;&#xA;&#xD;&#xA;# Install daemon&#xD;&#xA;echo '[LT]?xml version=[QUOT]1.0[QUOT] encoding=[QUOT]UTF-8[QUOT]?[GT]' [GT] $pathToDaemon&#xD;&#xA;echo '[LT]!DOCTYPE plist PUBLIC [QUOT]-//Apple//DTD PLIST 1.0//EN[QUOT] [QUOT]http://www.apple.com/DTDs/PropertyList-1.0.dtd[QUOT][GT]' [GT][GT] $pathToDaemon&#xD;&#xA;echo '[LT]plist version=[QUOT]1.0[QUOT][GT]' [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;[LT]dict[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]key[GT]Label[LT]/key[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]string[GT]com.ldms.launcher[LT]/string[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]key[GT]ProgramArguments[LT]/key[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]array[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;       [LT]string[GT]/bin/sh[LT]/string[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;       [LT]string[GT]${pathToInstall}[LT]/string[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]/array[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]key[GT]StartInterval[LT]/key[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;    [LT]integer[GT]43200[LT]/integer[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;[LT]/dict[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;echo &quot;[LT]/plist[GT]&quot; [GT][GT] $pathToDaemon&#xD;&#xA;chown root:wheel &quot;$pathToDaemon&quot;&#xD;&#xA;&#xD;&#xA;launchctl load $pathToDaemon&#xD;&#xA;&#xD;&#xA;exit 0" />
+                  </Args>
+                </Cmd>
+              </Cmds>
+            </Patch>
+          </Patches>
+          <AssociatedProducts />
+          <ReadonlyGroups />
+          <LANDeskRevision>33</LANDeskRevision>
+        </EVulnerability>
+      </Prerequisites>
+      <IAVAs />
+      <PublishDate>2016-03-21T20:12:40.48-07:00</PublishDate>
+      <Title>DSC - OS X - Standard - Agent Health</Title>
+      <Description />
+      <Summary />
+      <Lang>INTL</Lang>
+      <MoreInfoURL />
+      <FAQURL />
+      <MaxAutoFixTries>-1</MaxAutoFixTries>
+      <Severity>1</Severity>
+      <OrigSeverity xsi:nil="true" />
+      <Vendor>DSC Demo</Vendor>
+      <Status>Enabled</Status>
+      <Type>Custom</Type>
+      <AutoFix>false</AutoFix>
+      <AutofixScopes />
+      <ScanScopes>
+        <string>Assembly Department</string>
+        <string>Baltimore</string>
+        <string>Boston</string>
+        <string>Chicago</string>
+        <string>Datacenter</string>
+        <string>Distribution Department</string>
+        <string>Dublin</string>
+        <string>Engineering Department</string>
+        <string>Executive Department</string>
+        <string>Facilities Department</string>
+        <string>Finance Department</string>
+        <string>Frankfurt</string>
+        <string>HR Department</string>
+        <string>IT Department</string>
+        <string>Legal Department</string>
+        <string>London</string>
+        <string>Manufacturing Department</string>
+        <string>Marketing Department</string>
+        <string>Operation Department</string>
+        <string>OS X DSC Demo</string>
+        <string>Paris</string>
+        <string>Sales Department</string>
+        <string>San Paulo</string>
+        <string>Seattle</string>
+        <string>Sydney</string>
+        <string>Tokyo</string>
+        <string>Toronto</string>
+      </ScanScopes>
+      <Tags />
+      <Fixable>AllFixable</Fixable>
+      <CanRunSilent>SomePatchesAreSilent</CanRunSilent>
+      <Compliance>false</Compliance>
+      <Category />
+      <SupercededState>None</SupercededState>
+      <Alert>false</Alert>
+      <HasCustomVars>true</HasCustomVars>
+      <Patches>
+        <Patch Download="DAuto" Silent="CRSUnknown" Reboot="RUnknown" UniqueFilename="" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Dependency</Name>
+          <Advanced />
+          <Comments>This definition depends on one or more definitions: DSC - OS X - Standard - Agent Health Boot Strap.</Comments>
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms />
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+        </Patch>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - Agent Health_OS X Base Agent" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>OS X Base Agent</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+Reason="Missing base agent executables in ldclient"
+Expected="All base agent files to exist in ldclient"
+
+# Check files
+if [ ! -d /Library/Application\ Support/LANDesk/bin/LANDESK\ Agent.app ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/launchInContext.sh ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldprefs ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldsubmitclientdata ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/enu-internal.getproxy.strings.xml ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/enu-internal.httpbase.strings.xml ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/enu-internal.proxyhost.strings.xml ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/poweroff.exe ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/bin/LANDESK\ CSA\ Configuration.app ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/brokerconfig ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldiscan ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldagentsettings ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/bin/ldresources ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/Resources/cba8.pamd.macosx ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/Resources/com.landesk.broker.plist ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/Resources/com.landesk.cba8.plist ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/Resources/com.landesk.msgsys.plist ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/Resources/com.landesk.pds.plist ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/Resources/com.landesk.pds2.plist ]; then
+   Detected=1
+elif [ ! -d /usr/local/LANDesk/common/cbaroot ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/addhandler ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/alert ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/alertrender ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/cba ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/cba8_uninstall.sh ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/httpclient ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/ldpgp ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/makekey ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/pds2d ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/pds2dis ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/pds2_uninstall.sh ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/proxyhost ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/reboothandler.sh ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/resetguard ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/shutdownhandler.sh ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/uniqueid ]; then
+   Detected=1
+elif [ ! -d /usr/local/LANDesk/common/cbaroot/alert ]; then
+   Detected=1
+elif [ ! -d /usr/local/LANDesk/common/cbaroot/allowed ]; then
+   Detected=1
+elif [ ! -d /usr/local/LANDesk/common/cbaroot/broker ]; then
+   Detected=1
+elif [ ! -d /usr/local/LANDesk/common/cbaroot/certs ]; then
+   Detected=1
+elif [ ! -d /usr/local/LANDesk/common/cbaroot/extensions ]; then
+   Detected=1
+elif [ ! -d /usr/local/LANDesk/common/cbaroot/services ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/cbaroot/index.tmpl ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/cbaroot/services/exec ]; then
+   Detected=1
+elif [ ! -f /usr/local/LANDesk/common/cbaroot/services/filexfer ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchAgents/com.landesk.dispatch.pl.plist ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchAgents/com.landesk.dispatch.sui.plist ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchAgents/com.landesk.dispatch.ui.plist ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchAgents/com.landesk.lockscreen.plist ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldcron ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/lddispatch ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldlockscreen ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldscheduler ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/sdclient ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/sendstatus ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchDaemons/com.landesk.dispatch.plist ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchDaemons/com.landesk.rotatelog.plist ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchDaemons/com.landesk.scheduler.plist ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchDaemons/com.landesk.cba8.plist ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchDaemons/com.landesk.msgsys.plist ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchDaemons/com.landesk.broker.plist ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchDaemons/com.landesk.pds.plist ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchDaemons/com.landesk.pds2.plist ]; then
+   Detected=1
+else
+   echo No files missing
+   Detected=0
+fi
+
+# Check daemons
+check=`sudo launchctl list com.landesk.scheduler |  grep PID | grep '^[1-9]*'`
+if [[ "$check" =~ "PID" ]]; then
+   echo daemon running
+else
+   echo scheduler not running
+   Detected=1
+fi
+check=`sudo launchctl list | grep landesk.logrotate`
+if [[ "$check" =~ "landesk.logrotate" ]]; then
+   echo daemon loaded
+else
+   echo roatelog not loaded
+   Detected=1
+fi
+check=`sudo launchctl list com.landesk.dispatch |  grep PID | grep '^[1-9]*'`
+if [[ "$check" =~ "PID" ]]; then
+   echo daemon running
+else
+   echo dispatch not running
+   Detected=1
+fi
+check=`sudo launchctl list | grep landesk.pds`
+if [[ "$check" =~ "landesk.pds" ]]; then
+   echo daemon loaded
+else
+   echo pds not loaded 
+   Detected=1
+fi
+check=`sudo launchctl list | grep landesk.pds`
+if [[ "$check" =~ "landesk.pds2" ]]; then
+   echo daemon loaded
+else
+   echo pds2 not loaded
+   Detected=1
+fi
+check=`sudo launchctl list | grep landesk.cba8`
+if [[ "$check" =~ "landesk.cba8" ]]; then
+   echo daemon loaded
+else
+   echo cba8 not loaded
+   Detected=1
+fi
+check=`sudo launchctl list | grep landesk.msgsys`
+if [[ "$check" =~ "landesk.msgsys" ]]; then
+   echo daemon loaded
+else
+   echo msgsys not loaded
+   Detected=1
+fi
+check=`sudo launchctl list | grep landesk.broker`
+if [[ "$check" =~ "landesk.broker" ]]; then
+   echo daemon loaded
+else
+   echo broker not loaded
+   Detected=1
+fi
+
+if [ $Detected -eq 1 ]; then
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+else
+   echo [QUOT]Detected:$Detected[QUOT]
+fi
+exit 0</DetectScript>
+          </Advanced>
+          <Comments>agentconfig
+baseagent
+brokerconfig
+inventory
+ldagentsettings
+resources
+sharedtech</Comments>
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/bin/hdiutil attach /usr/local/ldms/agent.dmg" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/bash&#xD;&#xA;#ISMAC=TRUE&#xD;&#xA;&#xD;&#xA;startLDWatcher() {&#xD;&#xA;killall vulscan&#xD;&#xA;killall vulscand&#xD;&#xA;/usr/sbin/installer -pkg /Volumes/LDMSClient/ldmsagent.pkg -target /&#xD;&#xA;/usr/bin/hdiutil detach /Volumes/LDMSClient&#xD;&#xA;exit 0&#xD;&#xA;}&#xD;&#xA;startLDWatcher &amp;&#xD;&#xA;&#xD;&#xA;exit 0" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - Agent Health_Power Management" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Power Management</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+
+if [ -f /Library/Application\ Support/LANDesk/bin/ldpwm ]; then
+   Detected=0
+else
+   Detected=1
+   Reason="ldpwn was missing"
+   Expected="ldpwn should have existed in the ldclient folder."
+fi
+
+if [ $Detected -eq 1 ]; then
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+else
+   echo [QUOT]Detected:$Detected[QUOT]
+fi
+exit 0</DetectScript>
+          </Advanced>
+          <Comments>powermanagement</Comments>
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/bin/hdiutil attach /usr/local/ldms/agent.dmg" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/sbin/installer -pkg /Volumes/LDMSClient/.packages/powermanagement.pkg -target /" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/bin/hdiutil detach /Volumes/LDMSClient" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - Agent Health_Provisioning" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Provisioning</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+Reason="Missing provisioning executables in ldclient"
+Expected="All provisioning files to exist in ldclient"
+
+if [ ! -f /Library/Application\ Support/LANDesk/bin/ldpagentconfig ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpcaptureprofile ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpcopyfile ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpcreatedir ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpdeletefile ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpexecute ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpimagecapture ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpimageosx ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpinstallmappedsoftware ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpmapserver ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpmountimage ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldppartition ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpprovision ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpreboot ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpsettings ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpsoftwaredist ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpunzip ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldpwait ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/bin/ldpDeviceNamer.app ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/bin/ldpsetDesktopImage.app ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/bin/ldpTemplateChooser.app ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/data/ldphandler.plist ]; then
+   Detected=1
+else
+   Detected=0
+fi
+
+if [ $Detected -eq 1 ]; then
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+else
+   echo [QUOT]Detected:$Detected[QUOT]
+fi
+exit 0</DetectScript>
+          </Advanced>
+          <Comments>provisioning</Comments>
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/bin/hdiutil attach /usr/local/ldms/agent.dmg" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/sbin/installer -pkg /Volumes/LDMSClient/.packages/provisioning.pkg -target /" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/bin/hdiutil detach /Volumes/LDMSClient" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - Agent Health_Remote Control" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Remote Control</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+Reason="Missing remote control executables in ldclient"
+Expected="All remote control files to exist in ldclient"
+
+# File checks
+if [ ! -d /Library/Application\ Support/LANDesk/bin/hideScreen.app ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/bin/ldchatclient.app ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/bin/ldobserve.app ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/bin/ldplacard.app ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/bin/ldremotemenu.app ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/bin/rcwebroot ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldfiletransfer ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldremote ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/bin/rcwebroot/defaultFileStoreDir ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/bin/rcwebroot/images ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/bin/rcwebroot/strings ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/BrowserDectec.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/browserdetect.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/ca-cert.pem ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/carpe_common.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/carpe_slider.css ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/carpe_slider.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/chatdialog.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/clipboardtransfer.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/draggablemouse.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/favicon.ico ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/fileTransfer.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/filetransferdialog.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/index.html ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/input.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/kbmapping.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/loading.gif ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/localization.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/localsettings.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/monitorconfig.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/processBar.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/rc.css ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/rc.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/rcdialog.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/rcPermission.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/rcpersist.html ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/rcwindow.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/rebootdialog.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/remoteexecutedialog.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/server-cert.pem ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/server-key.pem ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/settingsdialog.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/storage.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/toolsdialog.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/ZeroClipboard.js ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/rcwebroot/ZeroClipboard10.swf ]; then
+   Detected=1
+else
+   Detected=0
+fi
+
+# Check daemon
+check=`sudo launchctl list com.landesk.remote |  grep PID | grep '^[1-9]*'`
+if [[ "$check" =~ "PID" ]]; then
+   echo daemon running
+else
+   Detected=1
+fi
+
+if [ $Detected -eq 1 ]; then
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+else
+   echo [QUOT]Detected:$Detected[QUOT]
+fi
+exit 0</DetectScript>
+          </Advanced>
+          <Comments>remotecontrol
+hidescreen</Comments>
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/bin/hdiutil attach /usr/local/ldms/agent.dmg" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/sbin/installer -pkg /Volumes/LDMSClient/.packages/remotecontrol.pkg -target /" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/sbin/installer -pkg /Volumes/LDMSClient/.packages/hidescreen.pkg -target /" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/bin/hdiutil detach /Volumes/LDMSClient" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - Agent Health_Security Scans" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Security Scans</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+Reason="Missing vulscan executables in ldclient"
+Expected="All vulscan files to exist in ldclient"
+
+if [ ! -f /Library/Application\ Support/LANDesk/bin/ldswdetect.sh ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldswrepair.sh ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/vulscand ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/vulscan ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldswupdate ]; then
+   Detected=1
+else
+   Detected=0
+fi
+
+if [ $Detected -eq 1 ]; then
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+else
+   echo [QUOT]Detected:$Detected[QUOT]
+fi
+exit 0</DetectScript>
+          </Advanced>
+          <Comments>vulscan</Comments>
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/bin/hdiutil attach /usr/local/ldms/agent.dmg" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/bash&#xD;&#xA;#ISMAC=TRUE&#xD;&#xA;&#xD;&#xA;startLDWatcher() {&#xD;&#xA;killall vulscan&#xD;&#xA;killall vulscand&#xD;&#xA;/usr/sbin/installer -pkg /Volumes/LDMSClient/.packages/vulscan.pkg -target /&#xD;&#xA;/usr/bin/hdiutil detach /Volumes/LDMSClient&#xD;&#xA;exit 0&#xD;&#xA;}&#xD;&#xA;startLDWatcher &amp;&#xD;&#xA;&#xD;&#xA;exit 0" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - Agent Health_Software Distribution" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Software Distribution</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+Reason="Missing base agent executables in ldclient"
+Expected="All base agent files to exist in ldclient"
+
+# Check files
+if [ ! -d /Library/Application\ Support/LANDesk/bin/ldswprogress.app ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldapm ]; then
+   Detected=1
+elif [ ! -d /Library/Application\ Support/LANDesk/data/multicast ]; then
+   Detected=1
+elif [ ! -f /Library/LaunchDaemons/com.landesk.ldtmc.plist ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldswd ]; then
+   Detected=1
+elif [ ! -f /Library/Application\ Support/LANDesk/bin/ldtmc ]; then
+   Detected=1
+else
+   Detected=0
+fi
+
+# Check daemons
+check=`sudo launchctl list com.landesk.ldtmc |  grep PID | grep '^[1-9]*'`
+if [[ "$check" =~ "PID" ]]; then
+   echo daemon running
+else
+   Detected=1
+fi
+
+if [ $Detected -eq 1 ]; then
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+else
+   echo [QUOT]Detected:$Detected[QUOT]
+fi
+exit 0</DetectScript>
+          </Advanced>
+          <Comments>ldapm
+softwareprogress
+swd</Comments>
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/bin/hdiutil attach /usr/local/ldms/agent.dmg" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/bash&#xD;&#xA;#ISMAC=TRUE&#xD;&#xA;&#xD;&#xA;startLDWatcher() {&#xD;&#xA;killall vulscan&#xD;&#xA;killall vulscand&#xD;&#xA;/usr/sbin/installer -pkg /Volumes/LDMSClient/.packages/ldapm.pkg -target /&#xD;&#xA;/usr/sbin/installer -pkg /Volumes/LDMSClient/.packages/softwareprogress.pkg -target /&#xD;&#xA;/usr/sbin/installer -pkg /Volumes/LDMSClient/.packages/swd.pkg -target /&#xD;&#xA;/usr/bin/hdiutil detach /Volumes/LDMSClient&#xD;&#xA;exit 0&#xD;&#xA;}&#xD;&#xA;startLDWatcher &amp;&#xD;&#xA;&#xD;&#xA;exit 0" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - Agent Health_Software License Monitoring" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Software License Monitoring</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+
+if [ -f /Library/Application\ Support/LANDesk/bin/ldslm ]; then
+   Detected=0
+else
+   Detected=1
+   Reason="ldslm was missing"
+   Expected="ldslm should have existed in the ldclient folder."
+fi
+
+if [ $Detected -eq 1 ]; then
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+else
+   echo [QUOT]Detected:$Detected[QUOT]
+fi
+exit 0</DetectScript>
+          </Advanced>
+          <Comments>ldslm</Comments>
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/bin/hdiutil attach /usr/local/ldms/agent.dmg" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/sbin/installer -pkg /Volumes/LDMSClient/.packages/ldslm.pkg -target /" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/bin/hdiutil detach /Volumes/LDMSClient" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - Agent Health_Workspaces" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Workspaces</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash
+#ISMAC=TRUE
+Detected=0
+
+if [ -d /Applications/LANDESK\ Workspaces.app ]; then
+   Detected=0
+else
+   Detected=1
+   Reason="Applications folder was missing the LANDESK Workspaces.app."
+   Expected="LANDESK Workspaces.app should have existed in the Applications folder."
+fi
+
+if [ $Detected -eq 1 ]; then
+   echo [QUOT]Detected:$Detected[QUOT]
+   echo [QUOT]Reason:$Reason[QUOT]
+   echo [QUOT]Expected:$Expected[QUOT]
+   echo [QUOT]Found:$Reason[QUOT]
+else
+   echo [QUOT]Detected:$Detected[QUOT]
+fi
+exit 0</DetectScript>
+          </Advanced>
+          <Comments>bridgeit</Comments>
+          <URL />
+          <State>Enabled</State>
+          <AdditionalFiles>
+            <AdditionalFile>
+              <Filename>http://%fqdn%/softwareDist/Agents/OS X DSC Agent.dmg</Filename>
+              <Hash>yValR5nG2wgaMl3sKdM59w==</Hash>
+              <hashType>MD5</hashType>
+            </AdditionalFile>
+          </AdditionalFiles>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/bin/hdiutil attach /usr/local/ldms/agent.dmg" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="WAIT" V="true" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+                <Arg N="PATH" V="/usr/sbin/installer -pkg /Volumes/LDMSClient/.packages/BridgeIT.pkg -target /" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="ARGS" />
+                <Arg N="CURDIR" />
+              </Args>
+            </Cmd>
+            <Cmd Type="Execute">
+              <Args>
+                <Arg N="PATH" V="/usr/bin/hdiutil detach /Volumes/LDMSClient" />
+                <Arg N="ARGS" />
+                <Arg N="TIMEOUT" V="%DEFAULTTIMEOUT%" />
+                <Arg N="WAIT" V="true" />
+                <Arg N="CURDIR" />
+                <Arg N="RETCODES" V="0, 3010, 3011, 1641" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+      </Patches>
+      <AssociatedProducts />
+      <ReadonlyGroups />
+      <LANDeskRevision>57</LANDeskRevision>
+    </Exportable>
+  </Items>
+</ExportableContainer>

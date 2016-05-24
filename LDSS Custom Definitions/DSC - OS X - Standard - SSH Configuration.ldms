@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<ExportableContainer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" LastSavedBy="LDLAB\administrator" Revision="0" SourceCore="LDSERVER" Guid="fake" SaveType="Inherit">
+  <DuplicateReferences />
+  <SyncEnabled>No</SyncEnabled>
+  <RemoteConsole>LDSERVER</RemoteConsole>
+  <LastSavedDate>0001-01-01T00:00:00-08:00</LastSavedDate>
+  <Name>DSC - OS X - Standard - SSH Configuration</Name>
+  <AssemblyVer>10.0.0.0</AssemblyVer>
+  <Items>
+    <Exportable xsi:type="EVulnerability" LastSavedBy="LDLAB\administrator" Revision="393236" SourceCore="LDSERVER" Guid="INTL_DSC - OS X - Standard - SSH Configuration" SaveType="Inherit">
+      <DuplicateReferences />
+      <SyncEnabled>No</SyncEnabled>
+      <RemoteConsole>LDSERVER</RemoteConsole>
+      <LastSavedDate>2016-05-24T15:39:27.35-07:00</LastSavedDate>
+      <Notes>Used to configure the normal state of SSH on OS X clients.</Notes>
+      <Name>DSC - OS X - Standard - SSH Configuration</Name>
+      <Groups>
+        <string>OS X State Management + OS X DSC</string>
+      </Groups>
+      <AssemblyVer>10.0.0.0</AssemblyVer>
+      <Prerequisites />
+      <IAVAs />
+      <PublishDate>2016-03-20T21:32:30.053-07:00</PublishDate>
+      <Title>DSC - OS X - Standard - SSH Configuration</Title>
+      <Description />
+      <Summary />
+      <Lang>INTL</Lang>
+      <MoreInfoURL />
+      <FAQURL />
+      <MaxAutoFixTries>-1</MaxAutoFixTries>
+      <Severity>2</Severity>
+      <OrigSeverity xsi:nil="true" />
+      <Vendor>DSC Demo</Vendor>
+      <Status>Enabled</Status>
+      <Type>Custom</Type>
+      <AutoFix>false</AutoFix>
+      <AutofixScopes />
+      <ScanScopes>
+        <string>Assembly Department</string>
+        <string>Baltimore</string>
+        <string>Boston</string>
+        <string>Chicago</string>
+        <string>Datacenter</string>
+        <string>Distribution Department</string>
+        <string>Dublin</string>
+        <string>Engineering Department</string>
+        <string>Executive Department</string>
+        <string>Facilities Department</string>
+        <string>Finance Department</string>
+        <string>Frankfurt</string>
+        <string>HR Department</string>
+        <string>IT Department</string>
+        <string>Legal Department</string>
+        <string>London</string>
+        <string>Manufacturing Department</string>
+        <string>Marketing Department</string>
+        <string>Operation Department</string>
+        <string>OS X DSC Demo</string>
+        <string>Paris</string>
+        <string>Sales Department</string>
+        <string>San Paulo</string>
+        <string>Seattle</string>
+        <string>Sydney</string>
+        <string>Tokyo</string>
+        <string>Toronto</string>
+      </ScanScopes>
+      <Tags />
+      <Fixable>AllFixable</Fixable>
+      <CanRunSilent>AllPatchesAreSilent</CanRunSilent>
+      <Compliance>false</Compliance>
+      <Category />
+      <SupercededState>None</SupercededState>
+      <Alert>false</Alert>
+      <HasCustomVars>false</HasCustomVars>
+      <Patches>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - SSH Configuration_Ensure Administrators have SSH access" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Ensure Administrators have SSH access</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash 
+#ISMAC=TRUE 
+Detected=0 
+
+# SSH Administrators Group - GUID listed below is the GUID for Administrators
+sshFlag=`dscl . read /Groups/com.apple.access_ssh | grep NestedGroups`
+if [[ [QUOT]$sshFlag[QUOT] != *[QUOT]ABCDEFAB-CDEF-ABCD-EFAB-CDEF00000050[QUOT]* ]]; then
+Detected=1
+Reason=[QUOT] Administrators group does not have SSH permissions [QUOT]
+Expected=[QUOT] Expected the Administrators group to have SSH permissions [QUOT]
+fi
+
+if [ $Detected -eq 1 ]; then
+echo [QUOT]Detected:$Detected[QUOT]
+echo [QUOT]Reason:$Reason[QUOT]
+echo [QUOT]Expected:$Expected[QUOT]
+echo [QUOT]Found:$Reason[QUOT]
+else
+echo [QUOT]Detected:$Detected[QUOT]
+fi
+</DetectScript>
+          </Advanced>
+          <Comments />
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/bash&#xD;&#xA;#ISMAC=TRUE&#xD;&#xA;&#xD;&#xA;# Configure SSH&#xD;&#xA;# Validate SSH access group exists&#xD;&#xA;check=`dscl . list /Groups | grep &quot;com.apple.access_ssh&quot;`&#xD;&#xA;if [ $check != &quot;com.apple.access_ssh&quot; ]; then&#xD;&#xA;   dseditgroup -o create -q com.apple.access_ssh&#xD;&#xA;fi&#xD;&#xA;# Add Administrators&#xD;&#xA;dseditgroup -o edit -a admin -t group com.apple.access_ssh&#xD;&#xA;dscl . append /Groups/com.apple.access_ssh GroupMembership administrator&#xD;&#xA;dscl . append /Groups/com.apple.access_ssh GroupMembers `dscl . read /Users/administrator GeneratedUID | cut -d &quot; &quot; -f 2`&#xD;&#xA;&#xD;&#xA;exit 0" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - SSH Configuration_SSH should be disabled" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>SSH should be disabled</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash 
+#ISMAC=TRUE 
+Detected=0 
+
+# SSH Enabled
+sshFlag=`systemsetup -getremotelogin`
+if [[ [QUOT]$sshFlag[QUOT] = *[QUOT]On[QUOT]* ]]; then
+Detected=1
+Reason=[QUOT]SSH is enabled[QUOT]
+Expected=[QUOT]Expected SSH to be disabled[QUOT]
+fi
+
+if [ $Detected -eq 1 ]; then
+echo [QUOT]Detected:$Detected[QUOT]
+echo [QUOT]Reason:$Reason[QUOT]
+echo [QUOT]Expected:$Expected[QUOT]
+echo [QUOT]Found:$Reason[QUOT]
+else
+echo [QUOT]Detected:$Detected[QUOT]
+fi
+
+exit 0</DetectScript>
+          </Advanced>
+          <Comments />
+          <URL />
+          <State>Disabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/bash&#xD;&#xA;#ISMAC=TRUE&#xD;&#xA;&#xD;&#xA;echo yes | systemsetup -setremotelogin off&#xD;&#xA;&#xD;&#xA;exit 0" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - SSH Configuration_SSH should be enabled" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>SSH should be enabled</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash 
+#ISMAC=TRUE 
+Detected=0 
+
+# SSH Enabled
+sshFlag=`systemsetup -getremotelogin`
+if [[ [QUOT]$sshFlag[QUOT] != *[QUOT]On[QUOT]* ]]; then
+Detected=1
+Reason=[QUOT]SSH is not enabled[QUOT]
+Expected=[QUOT]Expected SSH to be enabled[QUOT]
+fi
+
+if [ $Detected -eq 1 ]; then
+echo [QUOT]Detected:$Detected[QUOT]
+echo [QUOT]Reason:$Reason[QUOT]
+echo [QUOT]Expected:$Expected[QUOT]
+echo [QUOT]Found:$Reason[QUOT]
+else
+echo [QUOT]Detected:$Detected[QUOT]
+fi
+
+exit 0</DetectScript>
+          </Advanced>
+          <Comments />
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/bash&#xD;&#xA;#ISMAC=TRUE&#xD;&#xA;&#xD;&#xA;systemsetup -setremotelogin on&#xD;&#xA;&#xD;&#xA;exit 0" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+      </Patches>
+      <AssociatedProducts />
+      <ReadonlyGroups />
+      <LANDeskRevision>6</LANDeskRevision>
+    </Exportable>
+  </Items>
+</ExportableContainer>

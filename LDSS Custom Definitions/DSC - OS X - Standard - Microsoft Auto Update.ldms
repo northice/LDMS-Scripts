@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<ExportableContainer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" LastSavedBy="LDLAB\administrator" Revision="0" SourceCore="LDSERVER" Guid="fake" SaveType="Inherit">
+  <DuplicateReferences />
+  <SyncEnabled>No</SyncEnabled>
+  <RemoteConsole>LDSERVER</RemoteConsole>
+  <LastSavedDate>0001-01-01T00:00:00-08:00</LastSavedDate>
+  <Name>DSC - OS X - Standard - Microsoft Auto Update</Name>
+  <AssemblyVer>10.0.0.0</AssemblyVer>
+  <Items>
+    <Exportable xsi:type="EVulnerability" LastSavedBy="LDLAB\administrator" Revision="393224" SourceCore="LDSERVER" Guid="INTL_DSC - OS X - Standard - Microsoft Auto Update" SaveType="Inherit">
+      <DuplicateReferences />
+      <SyncEnabled>No</SyncEnabled>
+      <RemoteConsole>LDSERVER</RemoteConsole>
+      <LastSavedDate>2016-05-24T15:39:27.35-07:00</LastSavedDate>
+      <Notes>Detect whether Apple's auto update feature is enabled and disabled if it is.</Notes>
+      <Name>DSC - OS X - Standard - Microsoft Auto Update</Name>
+      <AssemblyVer>10.0.0.0</AssemblyVer>
+      <Prerequisites />
+      <IAVAs />
+      <PublishDate>2016-04-20T07:57:23.5-07:00</PublishDate>
+      <Title>DSC - OS X - Standard - Microsoft Auto Update</Title>
+      <Description />
+      <Summary />
+      <Lang>INTL</Lang>
+      <MoreInfoURL />
+      <FAQURL />
+      <MaxAutoFixTries>0</MaxAutoFixTries>
+      <Severity>2</Severity>
+      <OrigSeverity xsi:nil="true" />
+      <Vendor>DSC Demo</Vendor>
+      <Status>Enabled</Status>
+      <Type>Custom</Type>
+      <AutoFix>false</AutoFix>
+      <AutofixScopes />
+      <ScanScopes>
+        <string>Assembly Department</string>
+        <string>Baltimore</string>
+        <string>Boston</string>
+        <string>Chicago</string>
+        <string>Datacenter</string>
+        <string>Distribution Department</string>
+        <string>Dublin</string>
+        <string>Engineering Department</string>
+        <string>Executive Department</string>
+        <string>Facilities Department</string>
+        <string>Finance Department</string>
+        <string>Frankfurt</string>
+        <string>HR Department</string>
+        <string>IT Department</string>
+        <string>Legal Department</string>
+        <string>London</string>
+        <string>Manufacturing Department</string>
+        <string>Marketing Department</string>
+        <string>Operation Department</string>
+        <string>OS X DSC Demo</string>
+        <string>Paris</string>
+        <string>Sales Department</string>
+        <string>San Paulo</string>
+        <string>Seattle</string>
+        <string>Sydney</string>
+        <string>Tokyo</string>
+        <string>Toronto</string>
+      </ScanScopes>
+      <Tags />
+      <Fixable>AllFixable</Fixable>
+      <CanRunSilent>AllPatchesAreSilent</CanRunSilent>
+      <Compliance>false</Compliance>
+      <Category />
+      <SupercededState>None</SupercededState>
+      <Alert>false</Alert>
+      <HasCustomVars>false</HasCustomVars>
+      <Patches>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - Microsoft Auto Update_Microsoft Auto Update Status Should Be Disabled" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Microsoft Auto Update Status Should Be Disabled</Name>
+          <Advanced>
+            <DetectScript>#!/bin/sh
+
+#  MS Automatically Check for Updates Detection.sh
+#  Created by Bennett Norton on 4/20/16.
+
+# The auto update setting is found at /Users/$username/Library/Preferences/com.microsoft.autoupdate2.plist
+
+userList=`dscl . list /Users shell | grep -v false | sed 's/_.*//' | sed 's/root//' | sed 's/Guest//' | sed 's/ .*//' | sed '/^$/d'`
+for userName in $userList
+do
+
+    MSAutoUpdateSetting=( $( defaults read /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist HowToCheck ) )
+
+# compare the returned value with your desired state
+# a MSAutoUpdateSetting of Automatic means it is enabled
+# a MSAutoUpdateSetting of Manual means it is disabled
+
+    if [[ $MSAutoUpdateSetting == *"Automatic"* ]] ; then
+        echo "Found: The option for 'Microsoft Automatically Check for Updates' is currently enabled"
+        echo "Reason: The value for 'Microsoft Automatically Check for Updates' is: $MSAutoUpdateSetting."
+        echo "Expected: The value for 'Microsoft Automatically Check for Updates' should be Manual"
+        echo "Detected: 1"
+        exit 1
+    else
+        echo "Found: The option for 'Microsoft Automatically Check for Updates' is already disabled"
+        echo "Reason: The value for 'Microsoft Automatically Check for Updates' is: $MSAutoUpdateSetting."
+        echo "Expected: The value for 'Microsoft Automatically Check for Updates' should be Manual"
+        echo "Detected: 0"
+        exit 0
+    fi
+done
+</DetectScript>
+          </Advanced>
+          <Comments />
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>true</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <Cmds>
+              <Cmd Type="ShellScript">
+                <Args>
+                  <Arg N="ScriptCode" V="#!/bin/sh&#xD;&#xA;&#xD;&#xA;#  MS Automatically Check for Updates Detection.sh&#xD;&#xA;#  Created by Bennett Norton on 4/5/16.&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;# The auto update setting is found at /Users/$username/Library/Preferences/com.microsoft.autoupdate2.plist&#xD;&#xA;userList=`dscl . list /Users shell | grep -v false | sed 's/_.*//' | sed 's/root//' | sed 's/Guest//' | sed 's/ .*//' | sed '/^$/d'`&#xD;&#xA;&#xD;&#xA;# compare the returned value with your desired state&#xD;&#xA;# a MSAutoUpdateSetting of Automatic means it is enabled&#xD;&#xA;# a MSAutoUpdateSetting of Manual means it is disabled&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;for userName in $userList&#xD;&#xA;do&#xD;&#xA;    defaults write /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist HowToCheck -string &quot;Automatic&quot;&#xD;&#xA;    chown root:admin /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist&#xD;&#xA;    chmod 644 /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist&#xD;&#xA;done&#xD;&#xA;" />
+                </Args>
+              </Cmd>
+            </Cmds>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/sh&#xD;&#xA;&#xD;&#xA;#  MS Automatically Check for Updates Detection.sh&#xD;&#xA;#  Created by Bennett Norton on 4/5/16.&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;# The auto update setting is found at /Users/$username/Library/Preferences/com.microsoft.autoupdate2.plist&#xD;&#xA;userList=`dscl . list /Users shell | grep -v false | sed 's/_.*//' | sed 's/root//' | sed 's/Guest//' | sed 's/ .*//' | sed '/^$/d'`&#xD;&#xA;&#xD;&#xA;# compare the returned value with your desired state&#xD;&#xA;# a MSAutoUpdateSetting of Automatic means it is enabled&#xD;&#xA;# a MSAutoUpdateSetting of Manual means it is disabled&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;for userName in $userList&#xD;&#xA;do&#xD;&#xA;    defaults write /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist HowToCheck -string &quot;Manual&quot;&#xD;&#xA;    chown root:admin /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist&#xD;&#xA;    chmod 644 /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist&#xD;&#xA;done&#xD;&#xA;" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*DSC - OS X - Standard - Microsoft Auto Update_Microsoft Auto Update Status Should Be Enabled" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Microsoft Auto Update Status Should Be Enabled</Name>
+          <Advanced>
+            <DetectScript>#!/bin/sh
+
+#  MS Automatically Check for Updates Detection.sh
+#  Created by Bennett Norton on 4/20/16.
+
+# The auto update setting is found at /Users/$username/Library/Preferences/com.microsoft.autoupdate2.plist
+
+userList=`dscl . list /Users shell | grep -v false | sed 's/_.*//' | sed 's/root//' | sed 's/Guest//' | sed 's/ .*//' | sed '/^$/d'`
+for userName in $userList
+do
+
+    MSAutoUpdateSetting=( $( defaults read /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist HowToCheck ) )
+
+# compare the returned value with your desired state
+# a MSAutoUpdateSetting of Automatic means it is enabled
+# a MSAutoUpdateSetting of Manual means it is disabled
+
+    if [[ $MSAutoUpdateSetting == *"Manual"* ]] ; then
+        echo "Found: The option for 'Microsoft Automatically Check for Updates' is currently disabled"
+        echo "Reason: The value for 'Microsoft Automatically Check for Updates' is: $MSAutoUpdateSetting."
+        echo "Expected: The value for 'Microsoft Automatically Check for Updates' should be Automatic"
+        echo "Detected: 1"
+        exit 1
+    else
+        echo "Found: The option for 'Microsoft Automatically Check for Updates' is already enabled"
+        echo "Reason: The value for 'Microsoft Automatically Check for Updates' is: $MSAutoUpdateSetting."
+        echo "Expected: The value for 'Microsoft Automatically Check for Updates' should be Manual"
+        echo "Detected: 0"
+        exit 0
+    fi
+done
+</DetectScript>
+          </Advanced>
+          <Comments />
+          <URL />
+          <State>Disabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>true</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <Cmds>
+              <Cmd Type="ShellScript">
+                <Args>
+                  <Arg N="ScriptCode" V="#!/bin/sh&#xD;&#xA;&#xD;&#xA;#  MS Automatically Check for Updates Detection.sh&#xD;&#xA;#  Created by Bennett Norton on 4/5/16.&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;# The auto update setting is found at /Users/$username/Library/Preferences/com.microsoft.autoupdate2.plist&#xD;&#xA;userList=`dscl . list /Users shell | grep -v false | sed 's/_.*//' | sed 's/root//' | sed 's/Guest//' | sed 's/ .*//' | sed '/^$/d'`&#xD;&#xA;&#xD;&#xA;# compare the returned value with your desired state&#xD;&#xA;# a MSAutoUpdateSetting of Automatic means it is enabled&#xD;&#xA;# a MSAutoUpdateSetting of Manual means it is disabled&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;for userName in $userList&#xD;&#xA;do&#xD;&#xA;    defaults write /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist HowToCheck -string &quot;Automatic&quot;&#xD;&#xA;    chown root:admin /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist&#xD;&#xA;    chmod 644 /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist&#xD;&#xA;done&#xD;&#xA;" />
+                </Args>
+              </Cmd>
+            </Cmds>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/sh&#xD;&#xA;&#xD;&#xA;#  MS Automatically Check for Updates Detection.sh&#xD;&#xA;#  Created by Bennett Norton on 4/5/16.&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;# The auto update setting is found at /Users/$username/Library/Preferences/com.microsoft.autoupdate2.plist&#xD;&#xA;userList=`dscl . list /Users shell | grep -v false | sed 's/_.*//' | sed 's/root//' | sed 's/Guest//' | sed 's/ .*//' | sed '/^$/d'`&#xD;&#xA;&#xD;&#xA;# compare the returned value with your desired state&#xD;&#xA;# a MSAutoUpdateSetting of Automatic means it is enabled&#xD;&#xA;# a MSAutoUpdateSetting of Manual means it is disabled&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;for userName in $userList&#xD;&#xA;do&#xD;&#xA;    defaults write /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist HowToCheck -string &quot;Automatic&quot;&#xD;&#xA;    chown root:admin /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist&#xD;&#xA;    chmod 644 /Users/$userName/Library/Preferences/com.microsoft.autoupdate2.plist&#xD;&#xA;done&#xD;&#xA;" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+      </Patches>
+      <AssociatedProducts />
+      <ReadonlyGroups />
+      <LANDeskRevision>6</LANDeskRevision>
+    </Exportable>
+  </Items>
+</ExportableContainer>
