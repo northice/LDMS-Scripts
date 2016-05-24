@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema version="10.0.0.0" type="tables">
+    <table name="TimeMachine" desc="" metaAdd="Yes" equiJoin="No" displayName="Time Machine" parentRelation="Computer" parent="Computer" tableType="1" image="HardDriv.bmp" rollupIdentity="Yes" >
+        <column name="Computer_Idn" type="Int" null="No" />
+        <column name="TimeMachine_Idn" type="Int" identity="Yes" null="No"  />
+        <column name="BackupVolumeName" type="Varchar(255)" displayName="Backup Volume Name" attributeTableType="99" PK="Yes" null="No"  />
+        <column name="AutomaticBackup" type="Int" displayName="Automatic Backup" attributeTableType="99" />
+        <column name="BytesAvailable" type="Int" displayName="Bytes Available" attributeTableType="99" />
+        <column name="BytesUsed" type="Int" displayName="Bytes Used" attributeTableType="99" />
+        <column name="LastDestinationID" type="Varchar(255)" displayName="Last Destination ID" attributeTableType="99" />
+        <column name="SkippedPaths" type="Varchar(255)" displayName="Skipped Paths" attributeTableType="99"  />
+        <column name="SkippedSystemFiles" type="Varchar(255)" displayName="Skipped System Files" attributeTableType="99"  />
+        <column name="SnapshotDates" type="Varchar(500)" displayName="Snapshot Dates" attributeTableType="99" />
+        
+        <primaryKey name="XPKTimeMachine">
+            <primaryKeyColumn column="Computer_Idn" />
+            <primaryKeyColumn column="TimeMachine_Idn" />
+            <primaryKeyColumn column="BackupVolumeName" />
+        </primaryKey>
+        
+        <index name="XIFTimeMachine_Idn">
+            <indexColumn column="TimeMachine_Idn" />
+        </index>
+        
+        
+    </table>
+</schema>

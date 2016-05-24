@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema version="10.0.0.0" type="tables">
+    <table name="SMARTStatus" desc="" metaAdd="Yes" equiJoin="No" displayName="SMART Status" parentRelation="Computer.Mass Storage" parent="Computer" tableType="1" image="HardDriv.bmp" rollupIdentity="Yes" >
+        
+        <column name="Computer_Idn" type="Int" null="No" />
+        <column name="SMARTStatus_Idn" type="Int" identity="Yes" null="No"  />
+        <column name="SMART_Status" type="Varchar(255)" displayName="SMART Status" attributeTableType="99" />
+        <column name="Device_Identifier" type="Varchar(255)" displayName="Device Identifier" attributeTableType="99" PK="Yes" null="No"  />
+        <column name="Device_Node" type="Varchar(255)" displayName="Device Node" attributeTableType="99" />
+        <column name="Device_Name" type="Varchar(255)" displayName="Device Name" attributeTableType="99" />
+        <column name="Device_Location" type="Varchar(255)" displayName="Device Location" attributeTableType="99" />
+        <column name="Removable_Media" type="Varchar(255)" displayName="Removable Media" attributeTableType="99" />
+        <column name="Solid_State" type="Varchar(255)" displayName="Solid State" attributeTableType="99" />
+        <column name="WorkflowstatusID" type="Varchar(255)" displayName="Workflow Status ID" attributeTableType="99" />
+        
+        <primaryKey name="XPKSmatStatus">
+            <primaryKeyColumn column="Computer_Idn" />
+            <primaryKeyColumn column="SMARTStatus_Idn" />
+            <primaryKeyColumn column="Device_Identifier" />
+        </primaryKey>
+        
+        <index name="XIFSmartStatus_Idn">
+            <indexColumn column="SMARTStatus_Idn" />
+        </index>
+        
+        
+    </table>
+</schema>

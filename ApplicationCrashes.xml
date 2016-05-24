@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<schema version="10.0.0.0" type="tables">
+
+<table name="ApplicationErrors" desc="" metaAdd="Yes" equiJoin="No" displayName="Application Errors" parentRelation="Computer.Diagnostic Data" parent="Computer" tableType="1" image="Vulnerability18.bmp" rollupIdentity="Yes" >
+
+    <column name="WorkflowstatusID" type="Int" displayName="Workflow Status ID" attributeTableType="99" />
+</table>
+
+</schema>
+

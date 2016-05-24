@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<schema version="10.0.0.0" type="tables">
+    
+    <table name="LocalGroups" desc="" metaAdd="Yes" equiJoin="No" displayName="Local Groups" parentRelation="Computer.Local Users and Groups" parent="Computer" tableType="26" image="ManageGroups.bmp" rollupIdentity="Yes" >
+        
+        <column name="ShortName" type="varchar(2000)" displayName="Short Name" attributeTableType="99"/>
+        <column name="GroupID" type="varchar(2000)" displayName="Group ID" attributeTableType="99" />
+        <column name="WorkflowstatusID" type="Int" displayName="Workflow Status ID" attributeTableType="99" />
+        
+    </table>
+
+    <table name="LocalUsers" desc="" metaAdd="Yes" equiJoin="No" displayName="Local User Accounts" parentRelation="Computer.Local Users and Groups" parent="Computer" tableType="26" image="ManageUsers.bmp" rollupIdentity="Yes" >
+        
+        <column name="UserID" type="Varchar(20)" displayName="User ID" attributeTableType="99"/>
+        <column name="PrimaryGroupID" type="Varchar(20)" displayName="Primary Group ID" attributeTableType="99"/>
+        <column name="Shell" type="Varchar(20)" displayName="Shell" attributeTableType="99"/>
+        <column name="HomePath" type="Varchar(20)" displayName="Home Path" attributeTableType="99"/>
+        <column name="WorkflowstatusID" type="Int" displayName="Workflow Status ID" attributeTableType="99" />
+    
+    </table>
+</schema>

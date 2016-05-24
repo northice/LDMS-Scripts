@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema version="10.0.0.0" type="tables">
+    <table name="OSXCertificates" desc="" metaAdd="Yes" equiJoin="No" displayName="Certificates" parentRelation="Computer" parent="Computer" tableType="1" image="Software.bmp" rollupIdentity="Yes" >
+        <column name="Computer_Idn" type="Int" null="No" />
+        <column name="Certificate_Idn" type="Int" identity="Yes" null="No"  />
+
+        <primaryKey name="XPKOSXCertificates">
+            <primaryKeyColumn column="Computer_Idn" />
+            <primaryKeyColumn column="Certificate_Idn" />
+        </primaryKey>
+        
+        <index name="XIFCertificate_Idn">
+            <indexColumn column="Certificate_Idn" />
+        </index>
+    </table>
+    
+    <table name="OSXSystemCertificates" desc="" metaAdd="Yes" equiJoin="No" displayName="System Certificates" parentRelation="Computer.Certificates" parent="Computer" tableType="1" image="Software.bmp" rollupIdentity="Yes" >
+        <column name="Computer_Idn" type="Int" null="No" />
+        <column name="SystemCertificate_Idn" type="Int" identity="Yes" null="No"  />
+        <column name="Name" type="Varchar(500)" displayName="Name" attributeTableType="99" PK="Yes" null="No"  />
+        <column name="SHA1Hash" type="Varchar(255)" displayName="SHA-1 Hash" attributeTableType="99" />
+        <column name="Keychain" type="Varchar(255)" displayName="Keychain" attributeTableType="99" />
+        <column name="Version" type="Int" displayName="Version" attributeTableType="99" />
+        <column name="Issued" type="Varchar(500)" displayName="Issued" attributeTableType="99" />
+        
+        <primaryKey name="XPKOSXSystemCertificates">
+            <primaryKeyColumn column="Computer_Idn" />
+            <primaryKeyColumn column="SystemCertificate_Idn" />
+        </primaryKey>
+        
+        <index name="XIFSystemCertificate_Idn">
+            <indexColumn column="SystemCertificate_Idn" />
+        </index>
+    </table>
+    
+    <table name="OSXSystemRootCertificates" desc="" metaAdd="Yes" equiJoin="No" displayName="System Root Certificates" parentRelation="Computer.Certificates" parent="Computer" tableType="1" image="Software.bmp" rollupIdentity="Yes" >
+        <column name="Computer_Idn" type="Int" null="No" />
+        <column name="SystemRootCertificate_Idn" type="Int" identity="Yes" null="No"  />
+        <column name="Name" type="Varchar(500)" displayName="Name" attributeTableType="99" PK="Yes" null="No"  />
+        <column name="SHA1Hash" type="Varchar(255)" displayName="SHA-1 Hash" attributeTableType="99" />
+        <column name="Keychain" type="Varchar(255)" displayName="Keychain" attributeTableType="99" />
+        <column name="Version" type="Int" displayName="Version" attributeTableType="99" />
+        <column name="Issued" type="Varchar(500)" displayName="Issued" attributeTableType="99" />
+        
+        <primaryKey name="XPKOSXSystemrootCertificates">
+            <primaryKeyColumn column="Computer_Idn" />
+            <primaryKeyColumn column="SystemRootCertificate_Idn" />
+        </primaryKey>
+        
+        <index name="XIFSystemRootCertificate_Idn">
+            <indexColumn column="SystemRootCertificate_Idn" />
+        </index>
+    </table>
+    
+</schema>

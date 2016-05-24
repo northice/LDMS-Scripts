@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema version="10.0.0.0" type="tables">
+    <table name="PackageReceipt" desc="" metaAdd="Yes" equiJoin="No" displayName="Package Receipt" parentRelation="Computer.Software" parent="Computer" tableType="1" image="Software.bmp" rollupIdentity="Yes" >
+        <column name="Computer_Idn" type="Int" null="No" />
+        <column name="PackageReceipt_Idn" type="Int" identity="Yes" null="No"  />
+        <column name="PackageID" type="Varchar(255)" displayName="Package ID" attributeTableType="99" PK="Yes" null="No"  />
+        <column name="Version" type="Varchar(255)" displayName="Version" attributeTableType="99" />
+        <column name="Volume" type="Varchar(255)" displayName="Volume" attributeTableType="99" />
+        <column name="Location" type="Varchar(255)" displayName="Location" attributeTableType="99" />
+        <column name="Install_Time" type="Varchar(255)" displayName="Install Time" attributeTableType="99" />
+        
+        <primaryKey name="XPKPackageReceipt">
+            <primaryKeyColumn column="Computer_Idn" />
+            <primaryKeyColumn column="PackageReceipt_Idn" />
+            <primaryKeyColumn column="PackageID" />
+        </primaryKey>
+        
+        <index name="XIFPackageReceipt_Idn">
+            <indexColumn column="PackageReceipt_Idn" />
+        </index>
+        
+        
+    </table>
+</schema>
