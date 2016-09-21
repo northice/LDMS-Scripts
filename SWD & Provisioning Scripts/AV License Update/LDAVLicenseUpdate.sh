@@ -13,4 +13,4 @@ destinationLocation="/Library/Application Support/LANDesk/sdcache"
 
 #sdclient downloads the license key and the kav addkey applies the key
 /Library/Application\ Support/LANDesk/bin/sdclient -noinstall -package "$fileToCopy" -destdir "$destinationLocation"
-kav addkey /Library/Application\ Support/LANDesk/sdcache/ldav.key
+kav addkey "$destinationLocation"/ldav.key
