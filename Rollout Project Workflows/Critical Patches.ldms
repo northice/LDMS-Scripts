@@ -1,0 +1,1006 @@
+<?xml version="1.0"?>
+<ExportableContainer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" LastSavedBy="LDLAB\administrator" Revision="0" SourceCore="LDSERVER" Guid="fake" SaveType="Inherit">
+  <DuplicateReferences />
+  <SyncEnabled>No</SyncEnabled>
+  <RemoteConsole>LDSERVER</RemoteConsole>
+  <LastSavedDate>0001-01-01T00:00:00-07:00</LastSavedDate>
+  <Name>Critical Patches</Name>
+  <AssemblyVer>10.0.0.0</AssemblyVer>
+  <Items>
+    <Exportable xsi:type="EWorkflow" LastSavedBy="LDLAB\administrator" Revision="24" SourceCore="LDSERVER" Owner="LDLAB\administrator" Guid="LDSERVER_v1567_CFD94" SaveType="Inherit">
+      <DuplicateReferences />
+      <SyncEnabled>Yes</SyncEnabled>
+      <RemoteConsole>LDSERVER</RemoteConsole>
+      <LastSavedDate>2016-08-11T11:26:40.607-06:00</LastSavedDate>
+      <Name>Critical Patches</Name>
+      <Groups>
+        <string>LDLAB\administrator</string>
+      </Groups>
+      <AssemblyVer>10.0.0.0</AssemblyVer>
+      <Stopped>true</Stopped>
+      <Type>Patch</Type>
+      <ScopeUser_Idn>3</ScopeUser_Idn>
+      <referencedExportables>
+        <Exportable xsi:type="ETaskTemplate" LastSavedBy="LDLAB\administrator" Revision="0" SourceCore="LDSERVER" Owner="1" Guid="LDSERVER_v1568_4BB80" SaveType="Inherit" ScopeUser="">
+          <DuplicateReferences />
+          <SyncEnabled>No</SyncEnabled>
+          <RemoteConsole>LDSERVER</RemoteConsole>
+          <LastSavedDate>2016-02-04T11:20:12.81-07:00</LastSavedDate>
+          <Name>Patch Policy Supported Push - Template</Name>
+          <Groups>
+            <string>1</string>
+          </Groups>
+          <AssemblyVer>10.0.0.0</AssemblyVer>
+          <ShouldEnforceTaskStatus>false</ShouldEnforceTaskStatus>
+          <wakeMachines xsi:nil="true" />
+          <wakeMachinesAsEnum>NO_WAKEUP</wakeMachinesAsEnum>
+          <rebootMachines>false</rebootMachines>
+          <timeZoneAware />
+          <initialStart>0001-01-01T00:00:00</initialStart>
+          <timeNextStart>0001-01-01T00:00:00</timeNextStart>
+          <timeLastModified>0001-01-01T00:00:00</timeLastModified>
+          <timeLastStart>0001-01-01T00:00:00</timeLastStart>
+          <timeLastEnd>0001-01-01T00:00:00</timeLastEnd>
+          <lastStatus>0</lastStatus>
+          <weekFlags>0</weekFlags>
+          <dayFlags>0</dayFlags>
+          <maxRetries>0</maxRetries>
+          <timesTried>0</timesTried>
+          <alwaysRun>0</alwaysRun>
+          <taskType>-1</taskType>
+          <rescheduleType>0</rescheduleType>
+          <rescheduleTypeGui>0</rescheduleTypeGui>
+          <queryType>None</queryType>
+          <isPublic>1</isPublic>
+          <timeLastRestartAll>0</timeLastRestartAll>
+          <AutoStartOpts>AutoStartUseDefaults</AutoStartOpts>
+          <UI>Task.PatchRepairTemplate.xml</UI>
+          <Overrides>
+            <p>
+              <Name>UseAcceleratedPush</Name>
+              <Val>True</Val>
+            </p>
+            <p>
+              <Name>UseDNSResolution</Name>
+              <Val>False</Val>
+            </p>
+            <p>
+              <Name>WaitForMachines</Name>
+              <Val>False</Val>
+            </p>
+          </Overrides>
+          <taskConfig />
+          <cfgid xsi:nil="true" />
+          <taskStatus>HOLD</taskStatus>
+          <packageid>0</packageid>
+          <deliverymethodid>0</deliverymethodid>
+          <userGroupId>0</userGroupId>
+          <commonGroupId>0</commonGroupId>
+          <queryIdn>0</queryIdn>
+          <ScopeUser_Idn xsi:nil="true" />
+          <ClientPolicy>
+            <PolicyInfo>
+              <PortalInfo />
+              <Mode>Required</Mode>
+              <ItemType>Patch</ItemType>
+              <TaskIdn>8</TaskIdn>
+              <LeaveInPortal>false</LeaveInPortal>
+              <Interval>Once</Interval>
+              <TaskName>Patch Policy Supported Push - Template</TaskName>
+              <MultiTaskProtection>true</MultiTaskProtection>
+              <PushTask>false</PushTask>
+            </PolicyInfo>
+            <RunInfo>
+              <Settings>
+                <p>
+                  <Name>fixnow</Name>
+                  <Val>True</Val>
+                </p>
+                <p>
+                  <Name>IgnoreSubsequentAttempts</Name>
+                  <Val>False</Val>
+                </p>
+              </Settings>
+              <IgnoreSubsequentAttempts>false</IgnoreSubsequentAttempts>
+            </RunInfo>
+          </ClientPolicy>
+          <TaskType>PushPull</TaskType>
+          <TargetAllUsers>1</TargetAllUsers>
+          <ScheduledQueries />
+          <ScheduledLDAPQueries />
+          <deliveryMethod xsi:type="EDeliveryMethod" LastSavedBy="LDLAB\Administrator" Revision="104" SourceCore="LDSERVER" Owner="1" Guid="LDSERVER_v1569_B0ABF" SaveType="Inherit">
+            <DuplicateReferences />
+            <SyncEnabled>No</SyncEnabled>
+            <RemoteConsole>LDSERVER</RemoteConsole>
+            <LastSavedDate>2016-09-20T17:11:04.513-06:00</LastSavedDate>
+            <Name>Standard policy-supported push distribution(1)</Name>
+            <Groups>
+              <string>1</string>
+            </Groups>
+            <Groups2 />
+            <AssemblyVer>10.0.0.0</AssemblyVer>
+            <pairs>
+              <p>
+                <Name>AllowCancel</Name>
+                <Val>true</Val>
+              </p>
+              <p>
+                <Name>AllowedBandwidthLAN</Name>
+                <Val>75</Val>
+              </p>
+              <p>
+                <Name>AllowedBandwidthWAN</Name>
+                <Val>50</Val>
+              </p>
+              <p>
+                <Name>AllowOfflineInstall</Name>
+                <Val>false</Val>
+              </p>
+              <p>
+                <Name>AllowPreDeployPopup</Name>
+                <Val>true</Val>
+              </p>
+              <p>
+                <Name>AllowPreDownloadPopup</Name>
+                <Val>true</Val>
+              </p>
+              <p>
+                <Name>AllowSource</Name>
+                <Val>true</Val>
+              </p>
+              <p>
+                <Name>AllowUserDelay</Name>
+                <Val>false</Val>
+              </p>
+              <p>
+                <Name>APMFrequency</Name>
+                <Val>1</Val>
+              </p>
+              <p>
+                <Name>APMPeriodicPeriod</Name>
+                <Val>86400</Val>
+              </p>
+              <p>
+                <Name>APMStartNow</Name>
+                <Val>false</Val>
+              </p>
+              <p>
+                <Name>APMType</Name>
+                <Val>1</Val>
+              </p>
+              <p>
+                <Name>AttemptPeer</Name>
+                <Val>true</Val>
+              </p>
+              <p>
+                <Name>AttemptPreferredServer</Name>
+                <Val>true</Val>
+              </p>
+              <p>
+                <Name>BandwidthOption</Name>
+                <Val>0</Val>
+              </p>
+              <p>
+                <Name>ClientDowngrade</Name>
+                <Val>false</Val>
+              </p>
+              <p>
+                <Name>ConsoleUserIdn</Name>
+                <Val>1</Val>
+              </p>
+              <p>
+                <Name>CustomMessage</Name>
+                <Val />
+              </p>
+              <p>
+                <Name>CustomMessageTimeout</Name>
+                <Val>300</Val>
+              </p>
+              <p>
+                <Name>DaysInCache</Name>
+                <Val>2</Val>
+              </p>
+              <p>
+                <Name>DefaultTimeoutAction</Name>
+                <Val>0</Val>
+              </p>
+              <p>
+                <Name>DeferralSnoozeTime</Name>
+                <Val>1</Val>
+              </p>
+              <p>
+                <Name>DeferralSnoozeTimePeriod</Name>
+                <Val>2</Val>
+              </p>
+              <p>
+                <Name>DelayUntilLogin</Name>
+                <Val>false</Val>
+              </p>
+              <p>
+                <Name>DeliveryMethodIdn</Name>
+                <Val>-1</Val>
+              </p>
+              <p>
+                <Name>Description</Name>
+                <Val>Moderate-speed distribution using bandwidth throttling without Multicast.</Val>
+              </p>
+              <p>
+                <Name>DiscoveryMethod</Name>
+                <Val>2</Val>
+              </p>
+              <p>
+                <Name>DiscoveryRetries</Name>
+                <Val>3</Val>
+              </p>
+              <p>
+                <Name>DiscoveryTimeout</Name>
+                <Val>500</Val>
+              </p>
+              <p>
+                <Name>DisplayResultToUser</Name>
+                <Val>false</Val>
+              </p>
+              <p>
+                <Name>DomainDiscovery</Name>
+                <Val>0</Val>
+              </p>
+              <p>
+                <Name>DownloadFromSourceOnly</Name>
+                <Val>false</Val>
+              </p>
+              <p>
+                <Name>EnableLoggedOffUserInstall</Name>
+                <Val>true</Val>
+              </p>
+              <p>
+                <Name>FailedMachineLimit</Name>
+                <Val>240</Val>
+              </p>
+              <p>
+                <Name>HideAllFeedback</Name>
+                <Val>true</Val>
+              </p>
+              <p>
+                <Name>IsDNSWINSLookupDisabled</Name>
+                <Val>true</Val>
+              </p>
+              <p>
+                <Name>IsSubnetBroadcastDisabled</Name>
+                <Val>true</Val>
+              </p>
+              <p>
+                <Name>LocalMaxSleep</Name>
+                <Val>200</Val>
+              </p>
+              <p>
+                <Name>LocalMinSleep</Name>
+                <Val>1</Val>
+              </p>
+              <p>
+                <Name>MaxDistThreads</Name>
+                <Val>240</Val>
+              </p>
+              <p>
+                <Name>MaximumNumberOfDeferrals</Name>
+                <Val>3</Val>
+              </p>
+              <p>
+                <Name>MaxThreads</Name>
+                <Val>5</Val>
+              </p>
+              <p>
+                <Name>MCRepWOL</Name>
+                <Val>0</Val>
+              </p>
+              <p>
+                <Name>MinDynamicBandwidth</Name>
+                <Val>0</Val>
+              </p>
+              <p>
+                <Name>MulticastOptions_Idn</Name>
+                <Val>-1</Val>
+              </p>
+              <p>
+                <Name>Name</Name>
+                <Val />
+              </p>
+              <p>
+                <Name>OnlyDownloadFromPeer</Name>
+                <Val>false</Val>
+              </p>
+              <p>
+                <Name>OSDowngrade</Name>
+                <Val>true</Val>
+              </p>
+              <p>
+                <Name>PeerPacketDelay</Name>
+                <Val>1</Val>
+              </p>
+              <p>
+                <Name>RebootOption</Name>
+                <Val>0</Val>
+              </p>
+              <p>
+                <Name>RepDaysInCache</Name>
+                <Val>14</Val>
+              </p>
+              <p>
+                <Name>RunFromSource</Name>
+                <Val>false</Val>
+              </p>
+              <p>
+                <Name>ShowFullUI</Name>
+                <Val>true</Val>
+              </p>
+              <p>
+                <Name>SourcePacketDelay</Name>
+                <Val>1</Val>
+              </p>
+              <p>
+                <Name>SubnetBroadcastTimeout</Name>
+                <Val>2500</Val>
+              </p>
+              <p>
+                <Name>Type</Name>
+                <Val>2</Val>
+              </p>
+              <p>
+                <Name>UseCustomMessage</Name>
+                <Val>false</Val>
+              </p>
+              <p>
+                <Name>UseDynamicBandwidth</Name>
+                <Val>true</Val>
+              </p>
+              <p>
+                <Name>UseMulticast</Name>
+                <Val>false</Val>
+              </p>
+              <p>
+                <Name>WaitForUserResponse</Name>
+                <Val>false</Val>
+              </p>
+              <p>
+                <Name>WANMaxSleep</Name>
+                <Val>200</Val>
+              </p>
+              <p>
+                <Name>WANMinSleep</Name>
+                <Val>1</Val>
+              </p>
+              <p>
+                <Name>WOLSleep</Name>
+                <Val>120</Val>
+              </p>
+            </pairs>
+            <Default>false</Default>
+            <BehaviorType>DeliveryMethod_PushAndPull</BehaviorType>
+          </deliveryMethod>
+          <ApmCommandLines>
+            <DBApmCommandline>
+              <Version>13</Version>
+              <CmdLine>"%LDMS_CLIENT_DIR%\sdclient.exe" /p="http://LDSERVER.ldlab.org/SoftwareDist/Gimp/gimp-2.8.10-setup.exe" /levels=3 /Hash=wU/GjNa4kxPaMmYhC8c7Hw== /pkgid=10 /pkgname="Gimp - Win" /FileListName="taskmanifest.LDSERVER.8.10.ini" /FileListHash="b6J6f/NgT7WcCu6iIbgKKQ==" /exe /An /wan=25 /lan=75 /cmds="SP- /SILENT /NORESTART" /taskid=8 /taskName="Gimp - Win for Workspaces" /core="LDSERVER:192.168.29.13" /EnableVirtualAppShortcuts  /enableloggedoffuserinstall  /dmname="Always listed for installation" /dmtype=4/detachedmode /primaryPkgId=10</CmdLine>
+            </DBApmCommandline>
+            <DBApmCommandline>
+              <Version>12</Version>
+              <CmdLine>"%LDMS_CLIENT_DIR%\sdclient.exe" /p="http://LDSERVER.ldlab.org/SoftwareDist/Gimp/gimp-2.8.10-setup.exe" /levels=3 /Hash=wU/GjNa4kxPaMmYhC8c7Hw== /pkgid=10 /pkgname="Gimp - Win" /FileListName="taskmanifest.LDSERVER.8.10.ini" /FileListHash="b6J6f/NgT7WcCu6iIbgKKQ==" /exe /An /wan=25 /lan=75 /cmds="SP- /SILENT /NORESTART" /taskid=8 /taskName="Gimp - Win for Workspaces" /core="LDSERVER:192.168.29.13" /EnableVirtualAppShortcuts  /enableloggedoffuserinstall  /dmname="Always listed for installation" /dmtype=4/detachedmode /primaryPkgId=10</CmdLine>
+            </DBApmCommandline>
+            <DBApmCommandline>
+              <Version>11</Version>
+              <CmdLine>"%LDMS_CLIENT_DIR%\sdclient.exe" /p="http://LDSERVER.ldlab.org/SoftwareDist/Gimp/gimp-2.8.10-setup.exe" /levels=3 /Hash=wU/GjNa4kxPaMmYhC8c7Hw== /FileListName="taskmanifest.LDSERVER.8.10.ini" /FileListHash="b6J6f/NgT7WcCu6iIbgKKQ==" /exe /An /wan=25 /lan=75 /cmds="SP- /SILENT /NORESTART" /taskid=8 /core="LDSERVER:192.168.29.13" /EnableVirtualAppShortcuts  /enableloggedoffuserinstall /detachedmode /primaryPkgId=10</CmdLine>
+            </DBApmCommandline>
+            <DBApmCommandline>
+              <Version>10</Version>
+              <CmdLine />
+            </DBApmCommandline>
+            <DBApmCommandline>
+              <Version>9</Version>
+              <CmdLine />
+            </DBApmCommandline>
+            <DBApmCommandline>
+              <Version>8</Version>
+              <CmdLine />
+            </DBApmCommandline>
+            <DBApmCommandline>
+              <Version>7</Version>
+              <CmdLine />
+            </DBApmCommandline>
+            <DBApmCommandline>
+              <Version>6</Version>
+              <CmdLine />
+            </DBApmCommandline>
+            <DBApmCommandline>
+              <Version>5</Version>
+              <CmdLine />
+            </DBApmCommandline>
+            <DBApmCommandline>
+              <Version>4</Version>
+              <CmdLine />
+            </DBApmCommandline>
+            <DBApmCommandline>
+              <Version>3</Version>
+              <CmdLine />
+            </DBApmCommandline>
+            <DBApmCommandline>
+              <Version>2</Version>
+              <CmdLine />
+            </DBApmCommandline>
+            <DBApmCommandline>
+              <Version>1</Version>
+              <CmdLine />
+            </DBApmCommandline>
+            <DBApmCommandline>
+              <Version>0</Version>
+              <CmdLine />
+            </DBApmCommandline>
+          </ApmCommandLines>
+          <ApmPolicyUsers />
+          <TaskUsers />
+          <OtherExportables />
+          <TemplateType>-2147483646</TemplateType>
+        </Exportable>
+      </referencedExportables>
+      <referencedScopes>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Asset Info"."Department" = "IT" OR "Computer"."Owner"."Department" = "IT"</BNF>
+          <Name>IT Department</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Asset Info"."Department" = "Assembly" OR "Computer"."Owner"."Department" = "Assembly"</BNF>
+          <Name>Assembly Department</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Device Name" LIKE "%BWI%"</BNF>
+          <Name>Baltimore</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Device Name" LIKE "%BOS%"</BNF>
+          <Name>Boston</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Device Name" LIKE "%ORD%" AND "Computer"."OS"."Name" NOT LIKE "%Microsoft Windows Server%"</BNF>
+          <Name>Chicago</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."OS"."Name" LIKE "%Server%" OR "Computer"."Device Type" = "Server" OR "Computer"."OS"."Name" LIKE "%Microsoft Windows Server%"</BNF>
+          <Name>Datacenter</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Asset Info"."Department" = "Distribution" OR "Computer"."Owner"."Department" = "Distribution"</BNF>
+          <Name>Distribution Department</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Device Name" LIKE "%DUB%"</BNF>
+          <Name>Dublin</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Asset Info"."Department" = "Engineering" OR "Computer"."Owner"."Department" = "Engineering"</BNF>
+          <Name>Engineering Department</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Asset Info"."Department" = "Executive" OR "Computer"."Owner"."Department" = "Executive"</BNF>
+          <Name>Executive Department</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Asset Info"."Department" = "Facilities" OR "Computer"."Owner"."Department" = "Facilities"</BNF>
+          <Name>Facilities Department</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Asset Info"."Department" = "Finance" OR "Computer"."Owner"."Department" = "Finance"</BNF>
+          <Name>Finance Department</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Device Name" LIKE "%FRA%"</BNF>
+          <Name>Frankfurt</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Asset Info"."Department" = "HR" OR "Computer"."Owner"."Department" = "HR"</BNF>
+          <Name>HR Department</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Asset Info"."Department" = "Legal" OR "Computer"."Owner"."Department" = "Legal"</BNF>
+          <Name>Legal Department</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Device Name" LIKE "%SLOUK%" OR "Computer"."Device Name" LIKE "%LHR%"</BNF>
+          <Name>London</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Asset Info"."Department" = "Manufacturing" OR "Computer"."Owner"."Department" = "Manufacturing"</BNF>
+          <Name>Manufacturing Department</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Asset Info"."Department" = "Marketing" OR "Computer"."Owner"."Department" = "Marketing"</BNF>
+          <Name>Marketing Department</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Asset Info"."Department" = "Operations" OR "Computer"."Owner"."Department" = "Operations"</BNF>
+          <Name>Operation Department</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Device Name" LIKE "%CDG%"</BNF>
+          <Name>Paris</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Asset Info"."Department" = "Sales" OR "Computer"."Owner"."Department" = "Sales"</BNF>
+          <Name>Sales Department</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Device Name" LIKE "%GRU%"</BNF>
+          <Name>San Paulo</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Device Name" LIKE "%SEA%"</BNF>
+          <Name>Seattle</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Device Name" LIKE "%SYD%"</BNF>
+          <Name>Sydney</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Device Name" LIKE "%HND%"</BNF>
+          <Name>Tokyo</Name>
+        </DBScope>
+        <DBScope>
+          <Description />
+          <ScopeType>3</ScopeType>
+          <BNF>"Computer"."Device Name" LIKE "%TOR%"</BNF>
+          <Name>Toronto</Name>
+        </DBScope>
+      </referencedScopes>
+      <Baggage>
+        <SendTakingLongEmail>true</SendTakingLongEmail>
+        <SendTakingLongAlert>false</SendTakingLongAlert>
+        <TakingLongDuration>1440</TakingLongDuration>
+        <TakingLongEmailIntervalMinutes>1440</TakingLongEmailIntervalMinutes>
+        <ApprovalEmailIntervalMinutes>1440</ApprovalEmailIntervalMinutes>
+        <SendExitCriteriaMetEmail>true</SendExitCriteriaMetEmail>
+        <SendExitCriteriaMetAlert>false</SendExitCriteriaMetAlert>
+        <SendApprovalEmail>true</SendApprovalEmail>
+        <EmailRecipients>
+          <string>administrator@ldlab.org</string>
+          <string>dave.miller@ldlab.org</string>
+        </EmailRecipients>
+      </Baggage>
+      <Steps>
+        <DBWorkflowStep>
+          <Name>Phase 1 - Pilot Group Scan</Name>
+          <RunOrder>1</RunOrder>
+          <Stopped>false</Stopped>
+          <Actions>
+            <PatchActions>
+              <GlobalScanStatus>-2</GlobalScanStatus>
+              <GlobalAutofix xsi:nil="true" />
+              <ScopesAddScanStatus>
+                <string>IT Department</string>
+              </ScopesAddScanStatus>
+              <ScopesRemoveScanStatus />
+              <ScopesAddAutofix />
+              <ScopesRemoveAutofix />
+              <GroupsAdd />
+              <GroupsRemove />
+              <TagsAdd />
+              <TagsRemove />
+            </PatchActions>
+            <SWDActions />
+          </Actions>
+          <ExitCriteria>
+            <MinimumDurationMinutes>10080</MinimumDurationMinutes>
+            <AdditionalDurationMinutes>0</AdditionalDurationMinutes>
+            <KeepContentTogether>false</KeepContentTogether>
+            <SuccessCriteria>
+              <ShouldVerify>false</ShouldVerify>
+              <TargetListType>DALQuery</TargetListType>
+              <VerifyBy>NotDetected</VerifyBy>
+              <LimitSampleSize>true</LimitSampleSize>
+              <SampleSize>500</SampleSize>
+              <MinimumSuccessRatePercent>80</MinimumSuccessRatePercent>
+            </SuccessCriteria>
+            <ApprovalRequired>false</ApprovalRequired>
+            <SendTakingLongEmail xsi:nil="true" />
+            <SendTakingLongAlert xsi:nil="true" />
+            <TakingLongDuration xsi:nil="true" />
+            <TakingLongEmailIntervalMinutes xsi:nil="true" />
+            <ApprovalEmailIntervalMinutes xsi:nil="true" />
+            <SendExitCriteriaMetEmail xsi:nil="true" />
+            <SendExitCriteriaMetAlert xsi:nil="true" />
+            <SendApprovalEmail xsi:nil="true" />
+            <DTWindowEnabled>false</DTWindowEnabled>
+            <DTWindowStartTime>0:0</DTWindowStartTime>
+            <DTWindowEndTime>3:0</DTWindowEndTime>
+            <DTWindowStartDay>Saturday</DTWindowStartDay>
+            <DTWindowEndDay>Sunday</DTWindowEndDay>
+            <DTWindowDayOfMonthStart>0</DTWindowDayOfMonthStart>
+            <DTWindowDayOfmonthEnd>0</DTWindowDayOfmonthEnd>
+          </ExitCriteria>
+        </DBWorkflowStep>
+        <DBWorkflowStep>
+          <Name>Phase 2 - Pilot Group Repair</Name>
+          <RunOrder>2</RunOrder>
+          <Stopped>false</Stopped>
+          <Targets LastSavedBy="LDLAB\administrator" Revision="3" SourceCore="LDSERVER" Owner="LDLAB\administrator" Guid="LDSERVER_v1570_864F" SaveType="Inherit">
+            <DuplicateReferences />
+            <SyncEnabled>No</SyncEnabled>
+            <RemoteConsole>LDSERVER</RemoteConsole>
+            <LastSavedDate>2016-06-10T10:08:18.11-06:00</LastSavedDate>
+            <Name>Phase 2 - Pilot Group Repair</Name>
+            <AssemblyVer>10.0.0.0</AssemblyVer>
+            <TargetedDBQueries />
+            <TargetedLDAPQueries />
+          </Targets>
+          <Actions>
+            <PatchActions>
+              <GlobalScanStatus>7</GlobalScanStatus>
+              <GlobalAutofix xsi:nil="true" />
+              <ScopesAddScanStatus />
+              <ScopesRemoveScanStatus />
+              <ScopesAddAutofix />
+              <ScopesRemoveAutofix />
+              <GroupsAdd />
+              <GroupsRemove />
+              <TagsAdd />
+              <TagsRemove />
+            </PatchActions>
+            <SWDActions />
+            <TaskTemplateCloneGuid>LDSERVER_v1568_4BB80</TaskTemplateCloneGuid>
+          </Actions>
+          <ExitCriteria>
+            <MinimumDurationMinutes>0</MinimumDurationMinutes>
+            <AdditionalDurationMinutes>4320</AdditionalDurationMinutes>
+            <KeepContentTogether>false</KeepContentTogether>
+            <SuccessCriteria>
+              <ShouldVerify>true</ShouldVerify>
+              <TargetListType>TaskTargets</TargetListType>
+              <TargetListGuid />
+              <VerifyBy>PatchInstalledAndNotDetected</VerifyBy>
+              <LimitSampleSize>true</LimitSampleSize>
+              <SampleSize>500</SampleSize>
+              <MinimumSuccessRatePercent>90</MinimumSuccessRatePercent>
+            </SuccessCriteria>
+            <ApprovalRequired>false</ApprovalRequired>
+            <SendTakingLongEmail xsi:nil="true" />
+            <SendTakingLongAlert xsi:nil="true" />
+            <TakingLongDuration xsi:nil="true" />
+            <TakingLongEmailIntervalMinutes xsi:nil="true" />
+            <ApprovalEmailIntervalMinutes xsi:nil="true" />
+            <SendExitCriteriaMetEmail xsi:nil="true" />
+            <SendExitCriteriaMetAlert xsi:nil="true" />
+            <SendApprovalEmail xsi:nil="true" />
+            <DTWindowEnabled>false</DTWindowEnabled>
+            <DTWindowStartTime>0:0</DTWindowStartTime>
+            <DTWindowEndTime>3:0</DTWindowEndTime>
+            <DTWindowStartDay>Saturday</DTWindowStartDay>
+            <DTWindowEndDay>Sunday</DTWindowEndDay>
+            <DTWindowDayOfMonthStart>0</DTWindowDayOfMonthStart>
+            <DTWindowDayOfmonthEnd>0</DTWindowDayOfmonthEnd>
+          </ExitCriteria>
+        </DBWorkflowStep>
+        <DBWorkflowStep>
+          <Name>Phase 3 - All Client Scopes Scan</Name>
+          <RunOrder>3</RunOrder>
+          <Stopped>false</Stopped>
+          <Actions>
+            <PatchActions>
+              <GlobalScanStatus>-2</GlobalScanStatus>
+              <GlobalAutofix xsi:nil="true" />
+              <ScopesAddScanStatus>
+                <string>Assembly Department</string>
+                <string>Baltimore</string>
+                <string>Boston</string>
+                <string>Chicago</string>
+                <string>Datacenter</string>
+                <string>Distribution Department</string>
+                <string>Dublin</string>
+                <string>Engineering Department</string>
+                <string>Executive Department</string>
+                <string>Facilities Department</string>
+                <string>Finance Department</string>
+                <string>Frankfurt</string>
+                <string>HR Department</string>
+                <string>IT Department</string>
+                <string>Legal Department</string>
+                <string>London</string>
+                <string>Manufacturing Department</string>
+                <string>Marketing Department</string>
+                <string>Operation Department</string>
+                <string>Paris</string>
+                <string>Sales Department</string>
+                <string>San Paulo</string>
+                <string>Seattle</string>
+                <string>Sydney</string>
+                <string>Tokyo</string>
+                <string>Toronto</string>
+              </ScopesAddScanStatus>
+              <ScopesRemoveScanStatus />
+              <ScopesAddAutofix />
+              <ScopesRemoveAutofix />
+              <GroupsAdd />
+              <GroupsRemove />
+              <TagsAdd />
+              <TagsRemove />
+            </PatchActions>
+            <SWDActions />
+          </Actions>
+          <ExitCriteria>
+            <MinimumDurationMinutes>0</MinimumDurationMinutes>
+            <AdditionalDurationMinutes>0</AdditionalDurationMinutes>
+            <KeepContentTogether>false</KeepContentTogether>
+            <SuccessCriteria>
+              <ShouldVerify>false</ShouldVerify>
+              <TargetListType>DALQuery</TargetListType>
+              <VerifyBy>NotDetected</VerifyBy>
+              <LimitSampleSize>true</LimitSampleSize>
+              <SampleSize>500</SampleSize>
+              <MinimumSuccessRatePercent>80</MinimumSuccessRatePercent>
+            </SuccessCriteria>
+            <ApprovalRequired>false</ApprovalRequired>
+            <SendTakingLongEmail xsi:nil="true" />
+            <SendTakingLongAlert xsi:nil="true" />
+            <TakingLongDuration xsi:nil="true" />
+            <TakingLongEmailIntervalMinutes xsi:nil="true" />
+            <ApprovalEmailIntervalMinutes xsi:nil="true" />
+            <SendExitCriteriaMetEmail xsi:nil="true" />
+            <SendExitCriteriaMetAlert xsi:nil="true" />
+            <SendApprovalEmail xsi:nil="true" />
+            <DTWindowEnabled>false</DTWindowEnabled>
+            <DTWindowStartTime>0:0</DTWindowStartTime>
+            <DTWindowEndTime>3:0</DTWindowEndTime>
+            <DTWindowStartDay>Saturday</DTWindowStartDay>
+            <DTWindowEndDay>Sunday</DTWindowEndDay>
+            <DTWindowDayOfMonthStart>0</DTWindowDayOfMonthStart>
+            <DTWindowDayOfmonthEnd>0</DTWindowDayOfmonthEnd>
+          </ExitCriteria>
+        </DBWorkflowStep>
+        <DBWorkflowStep>
+          <Name>Phase 4 - Production Group 1 Repair</Name>
+          <RunOrder>4</RunOrder>
+          <Stopped>false</Stopped>
+          <Targets LastSavedBy="LDLAB\administrator" Revision="3" SourceCore="LDSERVER" Owner="LDLAB\administrator" Guid="LDSERVER_v1571_D8F9C" SaveType="Inherit">
+            <DuplicateReferences />
+            <SyncEnabled>No</SyncEnabled>
+            <RemoteConsole>LDSERVER</RemoteConsole>
+            <LastSavedDate>2016-02-04T11:26:51.927-07:00</LastSavedDate>
+            <Name>Phase 4 - Production Group 1 Repair</Name>
+            <AssemblyVer>10.0.0.0</AssemblyVer>
+            <TargetedDBQueries />
+            <TargetedLDAPQueries />
+          </Targets>
+          <Actions>
+            <PatchActions>
+              <GlobalScanStatus>7</GlobalScanStatus>
+              <GlobalAutofix xsi:nil="true" />
+              <ScopesAddScanStatus />
+              <ScopesRemoveScanStatus />
+              <ScopesAddAutofix />
+              <ScopesRemoveAutofix />
+              <GroupsAdd />
+              <GroupsRemove />
+              <TagsAdd />
+              <TagsRemove />
+            </PatchActions>
+            <SWDActions />
+            <TaskTemplateCloneGuid>LDSERVER_v1568_4BB80</TaskTemplateCloneGuid>
+          </Actions>
+          <ExitCriteria>
+            <MinimumDurationMinutes>0</MinimumDurationMinutes>
+            <AdditionalDurationMinutes>0</AdditionalDurationMinutes>
+            <KeepContentTogether>false</KeepContentTogether>
+            <SuccessCriteria>
+              <ShouldVerify>true</ShouldVerify>
+              <TargetListType>TaskTargets</TargetListType>
+              <TargetListGuid />
+              <VerifyBy>NotDetected</VerifyBy>
+              <LimitSampleSize>true</LimitSampleSize>
+              <SampleSize>500</SampleSize>
+              <MinimumSuccessRatePercent>90</MinimumSuccessRatePercent>
+            </SuccessCriteria>
+            <ApprovalRequired>false</ApprovalRequired>
+            <SendTakingLongEmail xsi:nil="true" />
+            <SendTakingLongAlert xsi:nil="true" />
+            <TakingLongDuration xsi:nil="true" />
+            <TakingLongEmailIntervalMinutes xsi:nil="true" />
+            <ApprovalEmailIntervalMinutes xsi:nil="true" />
+            <SendExitCriteriaMetEmail xsi:nil="true" />
+            <SendExitCriteriaMetAlert xsi:nil="true" />
+            <SendApprovalEmail xsi:nil="true" />
+            <DTWindowEnabled>false</DTWindowEnabled>
+            <DTWindowStartTime>0:0</DTWindowStartTime>
+            <DTWindowEndTime>3:0</DTWindowEndTime>
+            <DTWindowStartDay>Saturday</DTWindowStartDay>
+            <DTWindowEndDay>Sunday</DTWindowEndDay>
+            <DTWindowDayOfMonthStart>0</DTWindowDayOfMonthStart>
+            <DTWindowDayOfmonthEnd>0</DTWindowDayOfmonthEnd>
+          </ExitCriteria>
+        </DBWorkflowStep>
+        <DBWorkflowStep>
+          <Name>Phase 5 - Production Group 2 Repair</Name>
+          <RunOrder>5</RunOrder>
+          <Stopped>false</Stopped>
+          <Targets LastSavedBy="LDLAB\administrator" Revision="2" SourceCore="LDSERVER" Owner="LDLAB\administrator" Guid="LDSERVER_v1572_AE3A3" SaveType="Inherit">
+            <DuplicateReferences />
+            <SyncEnabled>No</SyncEnabled>
+            <RemoteConsole>LDSERVER</RemoteConsole>
+            <LastSavedDate>2016-02-04T11:27:29.86-07:00</LastSavedDate>
+            <Name>Phase 5 - Production Group 2 Repair</Name>
+            <AssemblyVer>10.0.0.0</AssemblyVer>
+            <TargetedDBQueries />
+            <TargetedLDAPQueries />
+          </Targets>
+          <Actions>
+            <PatchActions>
+              <GlobalScanStatus>7</GlobalScanStatus>
+              <GlobalAutofix xsi:nil="true" />
+              <ScopesAddScanStatus />
+              <ScopesRemoveScanStatus />
+              <ScopesAddAutofix />
+              <ScopesRemoveAutofix />
+              <GroupsAdd />
+              <GroupsRemove />
+              <TagsAdd />
+              <TagsRemove />
+            </PatchActions>
+            <SWDActions />
+            <TaskTemplateCloneGuid>LDSERVER_v1568_4BB80</TaskTemplateCloneGuid>
+          </Actions>
+          <ExitCriteria>
+            <MinimumDurationMinutes>0</MinimumDurationMinutes>
+            <AdditionalDurationMinutes>0</AdditionalDurationMinutes>
+            <KeepContentTogether>false</KeepContentTogether>
+            <SuccessCriteria>
+              <ShouldVerify>true</ShouldVerify>
+              <TargetListType>TaskTargets</TargetListType>
+              <TargetListGuid />
+              <VerifyBy>NotDetected</VerifyBy>
+              <LimitSampleSize>true</LimitSampleSize>
+              <SampleSize>500</SampleSize>
+              <MinimumSuccessRatePercent>90</MinimumSuccessRatePercent>
+            </SuccessCriteria>
+            <ApprovalRequired>false</ApprovalRequired>
+            <SendTakingLongEmail xsi:nil="true" />
+            <SendTakingLongAlert xsi:nil="true" />
+            <TakingLongDuration xsi:nil="true" />
+            <TakingLongEmailIntervalMinutes xsi:nil="true" />
+            <ApprovalEmailIntervalMinutes xsi:nil="true" />
+            <SendExitCriteriaMetEmail xsi:nil="true" />
+            <SendExitCriteriaMetAlert xsi:nil="true" />
+            <SendApprovalEmail xsi:nil="true" />
+            <DTWindowEnabled>false</DTWindowEnabled>
+            <DTWindowStartTime>0:0</DTWindowStartTime>
+            <DTWindowEndTime>3:0</DTWindowEndTime>
+            <DTWindowStartDay>Saturday</DTWindowStartDay>
+            <DTWindowEndDay>Sunday</DTWindowEndDay>
+            <DTWindowDayOfMonthStart>0</DTWindowDayOfMonthStart>
+            <DTWindowDayOfmonthEnd>0</DTWindowDayOfmonthEnd>
+          </ExitCriteria>
+        </DBWorkflowStep>
+        <DBWorkflowStep>
+          <Name>Phase 6 - Global Autofix</Name>
+          <RunOrder>6</RunOrder>
+          <Stopped>false</Stopped>
+          <Actions>
+            <PatchActions>
+              <GlobalScanStatus>7</GlobalScanStatus>
+              <GlobalAutofix xsi:nil="true" />
+              <ScopesAddScanStatus />
+              <ScopesRemoveScanStatus />
+              <ScopesAddAutofix>
+                <string>Assembly Department</string>
+                <string>Baltimore</string>
+                <string>Boston</string>
+                <string>Chicago</string>
+                <string>Datacenter</string>
+                <string>Distribution Department</string>
+                <string>Dublin</string>
+                <string>Engineering Department</string>
+                <string>Executive Department</string>
+                <string>Facilities Department</string>
+                <string>Finance Department</string>
+                <string>Frankfurt</string>
+                <string>HR Department</string>
+                <string>IT Department</string>
+                <string>Legal Department</string>
+                <string>London</string>
+                <string>Manufacturing Department</string>
+                <string>Marketing Department</string>
+                <string>Operation Department</string>
+                <string>Paris</string>
+                <string>Sales Department</string>
+                <string>San Paulo</string>
+                <string>Seattle</string>
+                <string>Sydney</string>
+                <string>Tokyo</string>
+                <string>Toronto</string>
+              </ScopesAddAutofix>
+              <ScopesRemoveAutofix />
+              <GroupsAdd />
+              <GroupsRemove />
+              <TagsAdd />
+              <TagsRemove />
+            </PatchActions>
+            <SWDActions />
+          </Actions>
+          <ExitCriteria>
+            <MinimumDurationMinutes>0</MinimumDurationMinutes>
+            <AdditionalDurationMinutes>0</AdditionalDurationMinutes>
+            <KeepContentTogether>false</KeepContentTogether>
+            <SuccessCriteria>
+              <ShouldVerify>false</ShouldVerify>
+              <TargetListType>DALQuery</TargetListType>
+              <VerifyBy>NotDetected</VerifyBy>
+              <LimitSampleSize>true</LimitSampleSize>
+              <SampleSize>500</SampleSize>
+              <MinimumSuccessRatePercent>80</MinimumSuccessRatePercent>
+            </SuccessCriteria>
+            <ApprovalRequired>false</ApprovalRequired>
+            <SendTakingLongEmail xsi:nil="true" />
+            <SendTakingLongAlert xsi:nil="true" />
+            <TakingLongDuration xsi:nil="true" />
+            <TakingLongEmailIntervalMinutes xsi:nil="true" />
+            <ApprovalEmailIntervalMinutes xsi:nil="true" />
+            <SendExitCriteriaMetEmail xsi:nil="true" />
+            <SendExitCriteriaMetAlert xsi:nil="true" />
+            <SendApprovalEmail xsi:nil="true" />
+            <DTWindowEnabled>false</DTWindowEnabled>
+            <DTWindowStartTime>0:0</DTWindowStartTime>
+            <DTWindowEndTime>3:0</DTWindowEndTime>
+            <DTWindowStartDay>Saturday</DTWindowStartDay>
+            <DTWindowEndDay>Sunday</DTWindowEndDay>
+            <DTWindowDayOfMonthStart>0</DTWindowDayOfMonthStart>
+            <DTWindowDayOfmonthEnd>0</DTWindowDayOfmonthEnd>
+          </ExitCriteria>
+        </DBWorkflowStep>
+      </Steps>
+      <TargetedTemplates />
+    </Exportable>
+  </Items>
+</ExportableContainer>
