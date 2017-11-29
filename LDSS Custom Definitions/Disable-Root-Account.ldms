@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<ExportableContainer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" LastSavedBy="NINE41\bennett" Revision="0" SourceCore="PRODUCTION" Guid="fake" SaveType="Inherit">
+  <DuplicateReferences />
+  <SyncEnabled>No</SyncEnabled>
+  <RemoteConsole>PRODUCTION</RemoteConsole>
+  <LastSavedDate>0001-01-01T00:00:00-07:00</LastSavedDate>
+  <Name>Disable-Root-Account</Name>
+  <AssemblyVer>10.1.0.0</AssemblyVer>
+  <Items>
+    <Exportable xsi:type="EVulnerability" LastSavedBy="NINE41\bennett" Revision="327685" SourceCore="PRODUCTION" Guid="INTL_Disable-Root-Account" SaveType="Inherit">
+      <DuplicateReferences />
+      <SyncEnabled>No</SyncEnabled>
+      <RemoteConsole>PRODUCTION</RemoteConsole>
+      <LastSavedDate>2017-11-28T22:10:34.143-07:00</LastSavedDate>
+      <Notes>Check for vulnerable root account in High Sierra and disable if need be.</Notes>
+      <Name>Disable-Root-Account</Name>
+      <AssemblyVer>10.1.0.0</AssemblyVer>
+      <Prerequisites />
+      <IAVAs />
+      <PublishDate>2017-11-28T18:08:27.117-07:00</PublishDate>
+      <Title>Disable Root Account</Title>
+      <Description>Security vulnerability in macOS High Sierra where you can enable and log into the root account without providing a password.</Description>
+      <Summary />
+      <Lang>INTL</Lang>
+      <MoreInfoURL />
+      <FAQURL />
+      <MaxAutoFixTries>0</MaxAutoFixTries>
+      <Severity>1</Severity>
+      <OrigSeverity xsi:nil="true" />
+      <Vendor>Nine41</Vendor>
+      <Status>Enabled</Status>
+      <Type>Custom</Type>
+      <AutoFix>true</AutoFix>
+      <AutofixScopes />
+      <ScanScopes />
+      <Tags />
+      <Fixable>AllFixable</Fixable>
+      <CanRunSilent>AllPatchesAreSilent</CanRunSilent>
+      <Compliance>false</Compliance>
+      <Category />
+      <SupercededState>None</SupercededState>
+      <Alert>false</Alert>
+      <HasCustomVars>false</HasCustomVars>
+      <Patches>
+        <Patch Download="DManual" Silent="CRSYes" Reboot="RNo" UniqueFilename="*Disable-Root-Account_Remediate High Sierra root account" Hash="" Sha1="" Sha256="" Size="0">
+          <Name>Remediate High Sierra root account</Name>
+          <Advanced>
+            <DetectScript>#!/bin/bash
+
+rootshell=$(/usr/bin/dscl . -read /Users/root UserShell | awk '{print $2}')
+
+
+if [[ "$rootshell" == *"/usr/bin/false"* ]];
+then
+	echo "Result: Root Account Disabled"
+    echo "Found: $check."
+    echo "Reason: Setting set as desired."
+    echo "Expected: Setting to be applied as is."
+    echo "Detected: 0"
+    exit 0
+else
+	echo "Result: Root Account Enabled"
+    echo "Found: $check."
+    echo "Reason: Setting not set as desired."
+    echo "Expected: Setting to be opposite as is."
+    echo "Detected: 1"
+    exit 0
+fi
+
+</DetectScript>
+          </Advanced>
+          <Comments />
+          <URL />
+          <State>Enabled</State>
+          <RunAsUser>false</RunAsUser>
+          <DisableWow64Redirect>false</DisableWow64Redirect>
+          <UACElevation>false</UACElevation>
+          <Files />
+          <RegKeys />
+          <Products />
+          <Platforms>
+            <ID>macosx</ID>
+            <ID>macosxserver</ID>
+          </Platforms>
+          <UninstallInfo>
+            <canBeUninstalled>false</canBeUninstalled>
+            <requiresOriginalPatch>false</requiresOriginalPatch>
+            <RunAsUser>false</RunAsUser>
+            <DisableWow64Redirect>false</DisableWow64Redirect>
+            <UACElevation>false</UACElevation>
+          </UninstallInfo>
+          <Cmds>
+            <Cmd Type="ShellScript">
+              <Args>
+                <Arg N="ScriptCode" V="#!/bin/bash&#xD;&#xA;&#xD;&#xA;ERROR=0&#xD;&#xA;&#xD;&#xA;# Set root password to randomized 32 character long password&#xD;&#xA;&#xD;&#xA;rootpassword=$(openssl rand -base64 32)&#xD;&#xA;&#xD;&#xA;/usr/bin/dscl . -passwd /Users/root &quot;$rootpassword&quot;&#xD;&#xA;&#xD;&#xA;# Disable root login by setting root's shell to /usr/bin/false.&#xD;&#xA;&#xD;&#xA;# To revert it back to /bin/sh, run the following command:&#xD;&#xA;# /usr/bin/dscl . -change /Users/root UserShell /usr/bin/false /bin/sh&#xD;&#xA;&#xD;&#xA;rootshell=$(/usr/bin/dscl . -read /Users/root UserShell | awk '{print $2}')&#xD;&#xA;&#xD;&#xA;if [[ -z &quot;$rootshell&quot; ]]; then&#xD;&#xA;&#xD;&#xA;# If root shell is blank or otherwise not set,&#xD;&#xA;# use dscl to set /usr/bin/false as the shell.&#xD;&#xA;&#xD;&#xA;echo &quot;Setting blank root shell to /usr/bin/false&quot;&#xD;&#xA;/usr/bin/dscl . -create /Users/root UserShell /usr/bin/false&#xD;&#xA;else&#xD;&#xA;&#xD;&#xA;# If root shell is set to an existing value, use dscl&#xD;&#xA;# to change the shell from the existing value and set&#xD;&#xA;# /usr/bin/false as the shell.&#xD;&#xA;&#xD;&#xA;echo &quot;Changing root shell from $rootshell to /usr/bin/false&quot;&#xD;&#xA;/usr/bin/dscl . -change /Users/root UserShell &quot;$rootshell&quot; /usr/bin/false&#xD;&#xA;fi&#xD;&#xA;&#xD;&#xA;exit &quot;$ERROR&quot;&#xD;&#xA;" />
+              </Args>
+            </Cmd>
+          </Cmds>
+        </Patch>
+      </Patches>
+      <AssociatedProducts />
+      <ReadonlyGroups />
+      <LANDeskRevision>5</LANDeskRevision>
+    </Exportable>
+  </Items>
+</ExportableContainer>
