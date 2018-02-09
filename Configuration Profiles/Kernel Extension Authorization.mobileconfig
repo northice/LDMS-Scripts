@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ABT_AllowSaveToDisk</key>
+	<true/>
+	<key>ABT_ConfigurationType</key>
+	<integer>4</integer>
+	<key>ABT_DevicePlatform</key>
+	<integer>1</integer>
+	<key>ABT_PayloadVersion</key>
+	<integer>1</integer>
+	<key>ABT_RemovalOption</key>
+	<string>Never</string>
+	<key>ConsentText</key>
+	<dict>
+		<key>default</key>
+		<string>This profile will authorize kernel extensions for Palo Alto (PXPZ95SK77), Zoom (BJ4HAAB9B3), Cylance (6ENJ69K633), VMWare (EG7KH642X6), ESET (P8DQRXPVLP), Parallels (4C6364ACXT), and Malware Bytes (GVZRY6KDKR). Do you want to allow this?</string>
+	</dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>ABT_PayloadVersion</key>
+			<integer>1</integer>
+			<key>PayloadDescription</key>
+			<string>Configures Configuration Profile security</string>
+			<key>PayloadDisplayName</key>
+			<string>Profile Security</string>
+			<key>PayloadIdentifier</key>
+			<string>1D988273-8916-451B-9BD5-382DA7855B02.ProfileSecurity</string>
+			<key>PayloadOrganization</key>
+			<string>Nine41</string>
+			<key>PayloadType</key>
+			<string>com.apple.profileRemovalPassword</string>
+			<key>PayloadUUID</key>
+			<string>2ED77465-D5FE-487B-ACA9-632275DF8D68</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>RemovalPassword</key>
+			<string>YourMagicPassword</string>
+		</dict>
+		<dict>
+			<key>ABT_PayloadVersion</key>
+			<integer>1</integer>
+			<key>ABT_PreferenceDomain</key>
+			<string>com.apple.syspolicy.kernel-extension-policy</string>
+			<key>PayloadContent</key>
+			<dict>
+				<key>com.apple.syspolicy.kernel-extension-policy</key>
+				<dict>
+					<key>Forced</key>
+					<array>
+						<dict>
+							<key>mcx_preference_settings</key>
+							<dict>
+								<key>PayloadContent</key>
+								<array>
+									<dict>
+										<key>AllowUserOverrides</key>
+										<false/>
+										<key>AllowedTeamIdentifiers</key>
+										<array>
+											<string>PXPZ95SK77</string>
+											<string>BJ4HAAB9B3</string>
+											<string>6ENJ69K633</string>
+											<string>EG7KH642X6</string>
+											<string>P8DQRXPVLP</string>
+											<string>4C6364ACXT</string>
+											<string>GVZRY6KDKR</string>
+										</array>
+										<key>PayloadEnabled</key>
+										<true/>
+									</dict>
+								</array>
+							</dict>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<key>PayloadDescription</key>
+			<string></string>
+			<key>PayloadDisplayName</key>
+			<string>Custom: (com.apple.syspolicy.kernel-extension-policy)</string>
+			<key>PayloadEnabled</key>
+			<true/>
+			<key>PayloadIdentifier</key>
+			<string>8CAC95B0-4980-4ECA-8126-C789043B5EDD.customsettings</string>
+			<key>PayloadOrganization</key>
+			<string>Nine41</string>
+			<key>PayloadType</key>
+			<string>com.apple.ManagedClient.preferences</string>
+			<key>PayloadUUID</key>
+			<string>13E6F4C6-5FFF-4505-A439-CA1564F02554</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Authorize kernel extensions</string>
+	<key>PayloadDisplayName</key>
+	<string>Kernel Extension Authorization</string>
+	<key>PayloadIdentifier</key>
+	<string>1D988273-8916-451B-9BD5-382DA7855B02</string>
+	<key>PayloadOrganization</key>
+	<string>Nine41</string>
+	<key>PayloadRemovalDisallowed</key>
+	<true/>
+	<key>PayloadScope</key>
+	<string>System</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>3BF7E0D6-89D0-4A2B-9012-88BAE6E2E9CB</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>
